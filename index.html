@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dessertkchaww — Manis di Setiap Gigitan</title>
+<style>
+/* ================= RESET & VARIABEL ================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #2c3e50;
+  --primary-dark: #1a252f;
+  --accent: #b87333;
+  --accent-light: #d4a373;
+  --amber: #e67e22;
+  --bg: #f5f5f7;
+  --card-bg: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --border: #e0e0e5;
+  --success: #27ae60;
+  --shadow: 0 8px 24px rgba(44, 62, 80, 0.15);
+  --shadow-hover: 0 16px 32px rgba(44, 62, 80, 0.25);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: 'Georgia', serif; }
+
+/* ================= NAVBAR ================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(245, 245, 247, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
+  border-bottom: 2px solid var(--accent);
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.logo {
+  font-family: 'Georgia', serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--primary);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  transition: all 0.3s;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-actions { display: flex; align-items: center; gap: 16px; }
+
+.cart-btn {
+  position: relative;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.3s;
+}
+.cart-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ================= HERO ================= */
+.hero {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  line-height: 1.15;
+  color: var(--primary);
+  animation: slideUp 1s ease;
+}
+.hero-text h1 span { color: var(--accent); }
+
+.hero-text p {
+  margin: 20px 0 30px;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  animation: slideUp 1.2s ease;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 14px 34px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, background 0.3s;
+  animation: slideUp 1.4s ease;
+  letter-spacing: 0.5px;
+}
+.cta-btn:hover { background: var(--accent); transform: translateY(-3px) scale(1.03); }
+
+.hero-img {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: floatIn 1.2s ease;
+  border: 3px solid var(--accent);
+}
+.hero-img img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.hero-img:hover img { transform: scale(1.08); }
+
+/* ================= SECTION UMUM ================= */
+section { padding: 70px 24px; max-width: 1200px; margin: auto; }
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: var(--primary);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.section-title.show { opacity: 1; transform: translateY(0); }
+
+.section-sub {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 45px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.15s;
+}
+.section-sub.show { opacity: 1; transform: translateY(0); }
+
+/* ================= KATEGORI ================= */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.category-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 26px 16px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.08);
+  cursor: pointer;
+  transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+  border: 2px solid transparent;
+}
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+.category-card .emoji { font-size: 2.4rem; display: block; margin-bottom: 10px; }
+.category-card h4 { font-size: 1rem; color: var(--primary); font-weight: 600; }
+
+/* ================= PRODUK ================= */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  color: var(--primary);
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.search-box input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  outline: none;
+  font-size: 0.95rem;
+  transition: border 0.3s;
+  background: var(--card-bg);
+}
+.search-box input:focus { border-color: var(--accent); }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.product-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+  border-top: 3px solid var(--accent);
+}
+.product-card.show { opacity: 1; transform: translateY(0); }
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.product-card:hover .product-img { transform: scale(1.08); }
+
+.product-info { padding: 18px; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+.badge.ready { background: #d1f0d1; color: #1e5e1e; }
+.badge.po { background: #ffe0b3; color: #8a4a00; }
+
+.product-info h4 { font-size: 1.1rem; margin-bottom: 6px; color: var(--primary); }
+.product-info .desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price { color: var(--accent); font-weight: bold; font-size: 1.05rem; }
+
+.add-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+.add-btn:hover { background: var(--accent); transform: scale(1.06); }
+
+/* ================= KEUNGGULAN ================= */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+.feature-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 32px 22px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.08);
+  transition: transform 0.35s, border-color 0.35s;
+  border-bottom: 3px solid transparent;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-bottom-color: var(--accent);
+}
+.feature-card .icon { font-size: 2.6rem; margin-bottom: 14px; }
+.feature-card h4 { margin-bottom: 8px; color: var(--primary); }
+.feature-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+/* ================= TESTIMONI ================= */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.testimonial {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.08);
+  position: relative;
+  transition: transform 0.35s;
+  border-left: 4px solid var(--accent);
+}
+.testimonial:hover { transform: translateY(-6px); }
+.testimonial::before {
+  content: '❝';
+  font-size: 3rem;
+  color: var(--border);
+  position: absolute;
+  top: 4px;
+  left: 18px;
+}
+.testimonial p { margin: 14px 0; font-style: italic; color: var(--text-muted); }
+.testimonial .name { font-weight: bold; color: var(--primary); }
+.stars { color: var(--accent); letter-spacing: 2px; }
+
+/* ================= ABOUT ================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.about-img {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 3px solid var(--accent);
+}
+.about-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-text h3 { font-size: 1.8rem; margin-bottom: 16px; color: var(--primary); }
+.about-text p { margin-bottom: 14px; color: var(--text-muted); line-height: 1.7; }
+
+/* ================= HAMPERS ================= */
+.hampers {
+  background: linear-gradient(135deg, #eef2f7, #dfe6ef);
+  border-radius: 16px;
+  padding: 50px 34px;
+  border: 2px solid var(--accent);
+}
+.hampers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+.hampers-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 26px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.1);
+  transition: transform 0.35s, border-color 0.35s;
+  border: 2px solid transparent;
+}
+.hampers-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent);
+}
+.hampers-card .icon { font-size: 2.4rem; margin-bottom: 10px; }
+.hampers-card h4 { color: var(--primary); margin-bottom: 8px; }
+
+/* ================= FORM ================= */
+.custom-form {
+  max-width: 600px;
+  margin: 30px auto 0;
+  display: grid;
+  gap: 16px;
+}
+.custom-form input, .custom-form textarea, .custom-form select {
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border 0.3s;
+  background: var(--card-bg);
+}
+.custom-form input:focus, .custom-form textarea:focus, .custom-form select:focus {
+  border-color: var(--accent);
+}
+.custom-form button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  letter-spacing: 0.5px;
+}
+.custom-form button:hover { background: var(--accent); transform: translateY(-2px); }
+
+/* ================= FAQ ================= */
+.faq-item {
+  background: var(--card-bg);
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.06);
+  border-left: 4px solid var(--primary);
+}
+.faq-question {
+  padding: 18px 22px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+  color: var(--primary);
+}
+.faq-question:hover { background: #eef2f7; }
+.faq-question .arrow { transition: transform 0.3s; color: var(--accent); }
+.faq-item.open .arrow { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 22px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding: 0 22px 18px; }
+
+/* ================= KONTAK ================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.contact-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 30px 22px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.08);
+  transition: transform 0.35s;
+  border-top: 3px solid var(--accent);
+}
+.contact-card:hover { transform: translateY(-6px); }
+.contact-card .icon { font-size: 2.4rem; margin-bottom: 12px; }
+.contact-card h4 { color: var(--primary); margin-bottom: 8px; }
+.wa-btn {
+  display: inline-block;
+  margin-top: 14px;
+  background: #25d366;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+.wa-btn:hover { background: #1da851; transform: scale(1.05); }
+
+/* ================= FOOTER ================= */
+footer {
+  background: var(--primary);
+  color: #dfe6ef;
+  text-align: center;
+  padding: 34px 20px;
+  margin-top: 40px;
+  border-top: 4px solid var(--accent);
+}
+footer .logo { color: #dfe6ef; margin-bottom: 10px; }
+footer .logo span { color: var(--accent-light); }
+footer p { font-size: 0.85rem; opacity: 0.8; }
+
+/* ================= CART MODAL ================= */
+.cart-modal {
+  position: fixed;
+  top: 0; right: -420px;
+  width: 380px;
+  max-width: 90vw;
+  height: 100%;
+  background: var(--card-bg);
+  box-shadow: -6px 0 30px rgba(0,0,0,0.2);
+  z-index: 2000;
+  transition: right 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+.cart-modal.open { right: 0; }
+.cart-header {
+  padding: 20px;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--accent);
+}
+.cart-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.cart-items { flex: 1; overflow-y: auto; padding: 16px; }
+.cart-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
+.cart-item-info { flex: 1; }
+.cart-item-info h5 { font-size: 0.92rem; color: var(--primary); }
+.cart-item-info .price { font-size: 0.85rem; color: var(--accent); }
+.qty-controls { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.qty-controls button {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--primary);
+  background: white;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: bold;
+}
+.remove-item {
+  background: none;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.cart-footer {
+  padding: 20px;
+  border-top: 2px solid var(--border);
+}
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  color: var(--primary);
+}
+.checkout-btn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.checkout-btn:hover { background: var(--accent); }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.overlay.show { opacity: 1; pointer-events: auto; }
+
+/* ================= CHECKOUT MODAL ================= */
+.checkout-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2500;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+.checkout-modal.open { display: flex; }
+
+.checkout-content {
+  background: var(--card-bg);
+  border-radius: 16px;
+  max-width: 750px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+  animation: modalIn 0.4s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(40px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.checkout-header {
+  background: var(--primary);
+  color: white;
+  padding: 22px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--accent);
+}
+.checkout-header h3 { font-size: 1.3rem; }
+.checkout-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.checkout-body { padding: 26px; }
+
+.checkout-section {
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.checkout-section:last-child { border-bottom: none; }
+
+.checkout-section h4 {
+  color: var(--primary);
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shipping-form {
+  display: grid;
+  gap: 12px;
+}
+.shipping-form input,
+.shipping-form textarea {
+  padding: 11px 16px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  outline: none;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: border 0.3s;
+}
+.shipping-form input:focus,
+.shipping-form textarea:focus { border-color: var(--accent); }
+
+/* Metode Pembayaran */
+.payment-methods {
+  display: grid;
+  gap: 10px;
+}
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: white;
+}
+.payment-option:hover {
+  border-color: var(--accent);
+  background: #fdf9f5;
+}
+.payment-option.selected {
+  border-color: var(--primary);
+  background: #eef2f7;
+  box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.08);
+}
+.payment-option input[type="radio"] {
+  appearance: none;
+  width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.payment-option input[type="radio"]:checked {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+.payment-option input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: white;
+  border-radius: 50%;
+}
+.payment-option .pay-icon {
+  font-size: 1.6rem;
+  width: 40px;
+  text-align: center;
+}
+.payment-option .pay-info { flex: 1; }
+.payment-option .pay-info h5 {
+  font-size: 0.95rem;
+  color: var(--primary);
+  margin-bottom: 2px;
+}
+.payment-option .pay-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Ringkasan Pesanan */
+.order-summary {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.order-item.total {
+  border-top: 2px dashed var(--border);
+  margin-top: 8px;
+  padding-top: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.checkout-actions {
+  display: flex;
+  gap: 12px;
+  padding: 20px 26px;
+  background: #f9fafb;
+  border-top: 1px solid var(--border);
+}
+.btn-cancel, .btn-confirm {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+}
+.btn-cancel {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--border);
+}
+.btn-cancel:hover { background: #f0f0f0; }
+.btn-confirm {
+  background: var(--primary);
+  color: white;
+}
+.btn-confirm:hover { background: var(--accent); transform: translateY(-2px); }
+
+/* ================= PAYMENT RESULT MODAL ================= */
+.payment-result {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.payment-result.open { display: flex; }
+
+.payment-result-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 520px;
+  width: 100%;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: modalIn 0.4s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.payment-result-content .success-icon {
+  font-size: 4rem;
+  margin-bottom: 12px;
+  animation: bounce 1s ease infinite;
+}
+.payment-result-content h3 {
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.payment-result-content p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-size: 0.92rem;
+}
+
+.payment-detail {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: left;
+  margin-bottom: 20px;
+  border: 2px dashed var(--accent);
+}
+.payment-detail h5 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+.payment-detail .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.payment-detail .row strong { color: var(--primary); }
+
+.rekening-box {
+  background: white;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  border-left: 4px solid var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.rekening-box .num {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+.copy-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+.copy-btn:hover { background: var(--amber); }
+
+.btn-wa-confirm {
+  display: inline-block;
+  width: 100%;
+  background: #25d366;
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-wa-confirm:hover { background: #1da851; transform: translateY(-2px); }
+
+.btn-close-result {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-close-result:hover { background: var(--primary-dark); }
+
+/* ================= TOAST ================= */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--primary);
+  color: white;
+  padding: 14px 26px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 4000;
+  border-left: 4px solid var(--accent);
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ================= ANIMASI ================= */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: translateX(60px) scale(0.95); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-text h1 { font-size: 2.2rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .nav-links {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--card-bg);
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+    border-bottom: 3px solid var(--accent);
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .hamburger { display: flex; }
+}
+
+@media (max-width: 500px) {
+  .checkout-actions { flex-direction: column; }
+  .payment-option { padding: 12px; }
+  .payment-option .pay-icon { font-size: 1.3rem; width: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+  <nav>
+    <div class="logo" onclick="scrollTo({top:0,behavior:'smooth'})">Dessert<span>kchaww</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" onclick="closeMenu()">Home</a></li>
+      <li><a href="#menu" onclick="closeMenu()">Menu</a></li>
+      <li><a href="#about" onclick="closeMenu()">Tentang Kami</a></li>
+      <li><a href="#hampers" onclick="closeMenu()">Hampers</a></li>
+      <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="toggleCart()">
+        🛒 Keranjang
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Manisnya <span>Dessert</span> Premium, Dibuat Fresh Setiap Hari</h1>
+    <p>Dessertkchaww menghadirkan cake, pastry, dan dessert box dengan bahan premium pilihan. Pesan sekarang dan rasakan kelembutan di setiap gigitan!</p>
+    <a href="#menu" class="cta-btn">Lihat Menu Hari Ini 🍰</a>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800" alt="Best Seller Dessertkchaww">
+  </div>
+</section>
+
+<!-- ================= KATEGORI ================= -->
+<section>
+  <h2 class="section-title">Kategori Dessert</h2>
+  <p class="section-sub">Pilih kategori favoritmu dan temukan manis yang pas</p>
+  <div class="categories">
+    <div class="category-card" onclick="filterCategory('Cakes')">
+      <span class="emoji">🎂</span><h4>Cakes</h4>
+    </div>
+    <div class="category-card" onclick="filterCategory('Pastries')">
+      <span class="emoji">🥐</span><h4>Pastries</h4>
+    </div>
+    <div class="category-card" onclick="filterCategory('Dessert Box')">
+      <span class="emoji">🍮</span><h4>Dessert Boxes</h4>
+    </div>
+    <div class="category-card" onclick="filterCategory('Cookies')">
+      <span class="emoji">🍪</span><h4>Cookies</h4>
+    </div>
+    <div class="category-card" onclick="filterCategory('Vegan')">
+      <span class="emoji">🌱</span><h4>Vegan / Gluten-Free</h4>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu">
+  <h2 class="section-title">Menu & Katalog Produk</h2>
+  <p class="section-sub">Semua dessert terbaik kami, siap dikirim ke rumahmu</p>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="🔍 Cari dessert favoritmu..." oninput="renderProducts()">
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="all" onclick="filterCategory('all', this)">Semua</button>
+    <button class="filter-btn" data-cat="Cakes" onclick="filterCategory('Cakes', this)">Cakes</button>
+    <button class="filter-btn" data-cat="Pastries" onclick="filterCategory('Pastries', this)">Pastries</button>
+    <button class="filter-btn" data-cat="Dessert Box" onclick="filterCategory('Dessert Box', this)">Dessert Box</button>
+    <button class="filter-btn" data-cat="Cookies" onclick="filterCategory('Cookies', this)">Cookies</button>
+    <button class="filter-btn" data-cat="Vegan" onclick="filterCategory('Vegan', this)">Vegan</button>
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- ================= KEUNGGULAN ================= -->
+<section>
+  <h2 class="section-title">Kenapa Pilih Dessertkchaww?</h2>
+  <p class="section-sub">Kualitas terbaik untuk momen manis Anda</p>
+  <div class="features">
+    <div class="feature-card">
+      <div class="icon">🌟</div>
+      <h4>Bahan Premium</h4>
+      <p>Menggunakan cokelat Belgia, mentega Prancis, dan buah segar pilihan.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">👨‍🍳</div>
+      <h4>Freshly Baked</h4>
+      <p>Dibuat segar setiap hari, tanpa pengawet, langsung dari dapur kami.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🚚</div>
+      <h4>Pengiriman Pengendali Suhu</h4>
+      <p>Dikemas dengan ice pack agar dessert tetap sempurna saat tiba.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">💳</div>
+      <h4>Pembayaran Fleksibel</h4>
+      <p>Transfer bank, e-wallet, QRIS, hingga COD. Pilih yang paling mudah!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONI ================= -->
+<section>
+  <h2 class="section-title">Kata Pelanggan Kami</h2>
+  <p class="section-sub">Cerita manis dari mereka yang sudah mencoba</p>
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      <p>Molten cake-nya juara! Cokelatnya lumer banget dan nggak bikin enek. Pengiriman juga cepat.</p>
+      <div class="name">— Sarah, Jakarta</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <p>Dessert box-nya cantik dan rasanya premium. Cocok banget buat hadiah ulang tahun teman.</p>
+      <div class="name">— Andini, Bandung</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <p>Sebagai yang gluten-free, aku senang banget ada pilihan vegan & gluten-free yang enak!</p>
+      <div class="name">— Maria, Surabaya</div>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <h2 class="section-title">Tentang Dessertkchaww</h2>
+  <p class="section-sub">Cerita di balik setiap gigitan manis</p>
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=700" alt="Dapur Dessertkchaww">
+    </div>
+    <div class="about-text">
+      <h3>Dari Dapur Kecil, Untuk Momen Bahagia Anda</h3>
+      <p>Dessertkchaww lahir dari kecintaan kami pada dunia pastry dan keinginan untuk menghadirkan dessert berkualitas restoran ke rumah Anda. Dimulai pada tahun 2020 dari dapur kecil, kini kami dipercaya ribuan pelanggan setia.</p>
+      <p>Kami percaya bahwa dessert bukan sekadar makanan penutup — ia adalah bagian dari kenangan. Karena itu, kami hanya menggunakan bahan-bahan terbaik: cokelat Belgia, mentega Prancis, dan buah segar setiap hari.</p>
+      <p><strong>Visi kami:</strong> Menjadi brand dessert rumahan paling dicintai di Indonesia. 💕</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HAMPERS & CUSTOM ================= -->
+<section id="hampers">
+  <div class="hampers">
+    <h2 class="section-title">Hampers & Custom Orders</h2>
+    <p class="section-sub">Hadiah manis untuk momen istimewa</p>
+    <div class="hampers-grid">
+      <div class="hampers-card">
+        <div class="icon">🎂</div>
+        <h4>Hampers Ulang Tahun</h4>
+        <p>Paket dessert + kartu ucapan custom. Mulai Rp 150.000.</p>
+      </div>
+      <div class="hampers-card">
+        <div class="icon">🎓</div>
+        <h4>Hampers Kelulusan</h4>
+        <p>Paket cookies & cake mini untuk wisuda. Mulai Rp 120.000.</p>
+      </div>
+      <div class="hampers-card">
+        <div class="icon">🎉</div>
+        <h4>Hampers Hari Raya</h4>
+        <p>Kue kering premium dalam box eksklusif. Mulai Rp 200.000.</p>
+      </div>
+    </div>
+
+    <h3 style="text-align:center; margin-top:50px; color:var(--primary);">Formulir Custom Order</h3>
+    <form class="custom-form" onsubmit="submitCustom(event)">
+      <input type="text" placeholder="Nama Anda" required>
+      <input type="tel" placeholder="Nomor WhatsApp" required>
+      <select required>
+        <option value="">-- Jenis Pesanan --</option>
+        <option>Custom Cake</option>
+        <option>Catering Event</option>
+        <option>Hampers Besar</option>
+        <option>Lainnya</option>
+      </select>
+      <textarea rows="4" placeholder="Detail pesanan (tema, jumlah, tanggal, dll)" required></textarea>
+      <button type="submit">Kirim Permintaan Custom</button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <h2 class="section-title">Pengiriman & FAQ</h2>
+  <p class="section-sub">Pertanyaan yang sering ditanyakan pelanggan</p>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>💳 Metode pembayaran apa saja yang tersedia?</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      Kami menerima Transfer Bank (BCA, Mandiri, BNI, BRI), E-Wallet (GoPay, OVO, DANA, ShopeePay), QRIS (semua mobile banking & e-wallet), dan COD (khusus area Tangerang & sekitarnya).
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>🚚 Bagaimana metode pengiriman Dessertkchaww?</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      Kami menggunakan kurir instant/sameday (Gojek, Grab, Lalamove) untuk menjaga kualitas dessert dingin. Untuk luar kota, kami menggunakan ekspedisi dengan ice pack dan pengiriman maksimal 1x24 jam.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>❄️ Bagaimana cara menyimpan dessert setelah sampai?</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      Simpan di kulkas pada suhu 4°C. Dessert box dan cake tahan hingga 3 hari, sedangkan cookies tahan hingga 2 minggu dalam wadah kedap udara.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>📦 Bagaimana jika produk rusak saat pengiriman?</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      Segera kirim foto/video produk rusak ke WhatsApp kami maksimal 1 jam setelah diterima. Kami akan mengganti produk atau memberikan refund penuh sesuai kebijakan.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>⏰ Kapan batas pemesanan untuk same-day delivery?</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      Batas pemesanan same-day delivery adalah pukul 14.00 WIB. Pesanan setelah jam tersebut akan dikirim keesokan harinya.
+    </div>
+  </div>
+</section>
+
+<!-- ================= KONTAK ================= -->
+<section id="kontak">
+  <h2 class="section-title">Hubungi Kami</h2>
+  <p class="section-sub">Kami siap membantu pertanyaan dan pesanan Anda</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="icon">💬</div>
+      <h4>WhatsApp CS</h4>
+      <p>Respon cepat 08.00 – 21.00 WIB</p>
+      <a href="https://wa.me/6285150964596" target="_blank" class="wa-btn">Chat Sekarang</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">📍</div>
+      <h4>Lokasi Dapur</h4>
+      <p>Jl. Binong Permai, Kab.Tangerang<br>(Tersedia opsi Pick-up)</p>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🕐</div>
+      <h4>Jam Operasional</h4>
+      <p>Senin – Sabtu: 08.00 – 21.00<br>Minggu: 09.00 – 18.00<br>Cut-off same-day: 14.00 WIB</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="logo">Dessert<span>kchaww</span></div>
+  <p>© 2026 Dessertkchaww. Dibuat dengan 💕 dan cokelat Belgia.</p>
+</footer>
+
+<!-- ================= CART MODAL ================= -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="cart-modal" id="cartModal">
+  <div class="cart-header">
+    <h3>🛒 Keranjang Anda</h3>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p style="text-align:center;color:#aaa;margin-top:40px;">Keranjang masih kosong 🍰</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cartTotal">Rp 0</span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">Lanjut ke Pembayaran →</button>
+  </div>
+</div>
+
+<!-- ================= CHECKOUT MODAL ================= -->
+<div class="checkout-modal" id="checkoutModal">
+  <div class="checkout-content">
+    <div class="checkout-header">
+      <h3>💳 Checkout Pesanan</h3>
+      <button onclick="closeCheckout()">✕</button>
+    </div>
+
+    <div class="checkout-body">
+      <!-- Info Pengiriman -->
+      <div class="checkout-section">
+        <h4>📍 Informasi Pengiriman</h4>
+        <div class="shipping-form">
+          <input type="text" id="custName" placeholder="Nama Lengkap" required>
+          <input type="tel" id="custPhone" placeholder="Nomor WhatsApp" required>
+          <textarea id="custAddress" rows="2" placeholder="Alamat Lengkap (Jalan, No, RT/RW, Kelurahan, Kecamatan, Kota)" required></textarea>
+          <input type="text" id="custNote" placeholder="Catatan (opsional) - misal: 'tambah lilin ulang tahun'">
+        </div>
+      </div>
+
+      <!-- Metode Pembayaran -->
+      <div class="checkout-section">
+        <h4>💳 Pilih Metode Pembayaran</h4>
+        <div class="payment-methods">
+          <label class="payment-option" data-value="bca">
+            <input type="radio" name="payment" value="bca">
+            <span class="pay-icon">🏦</span>
+            <div class="pay-info">
+              <h5>Transfer Bank BCA</h5>
+              <p>a/n Dessertkchaww — 1234567890</p>
+            </div>
+          </label>
+          <label class="payment-option" data-value="mandiri">
+            <input type="radio" name="payment" value="mandiri">
+            <span class="pay-icon">🏦</span>
+            <div class="pay-info">
+              <h5>Transfer Bank Mandiri</h5>
+              <p>a/n Dessertkchaww — 9876543210</p>
+            </div>
+          </label>
+          <label class="payment-option" data-value="bni">
+            <input type="radio" name="payment" value="bni">
+            <span class="pay-icon">🏦</span>
+            <div class="pay-info">
+              <h5>Transfer Bank BNI</h5>
+              <p>a/n Dessertkchaww — 1122334455</p>
+            </div>
+          </label>
+          <label class="payment-option" data-value="gopay">
+            <input type="radio" name="payment" value="gopay">
+            <span class="pay-icon">📱</span>
+            <div class="pay-info">
+              <h5>GoPay / OVO / DANA</h5>
+              <p>E-Wallet — 085150964596</p>
+            </div>
+          </label>
+          <label class="payment-option" data-value="qris">
+            <input type="radio" name="payment" value="qris">
+            <span class="pay-icon">📸</span>
+            <div class="pay-info">
+              <h5>QRIS</h5>
+              <p>Scan QR — Semua bank & e-wallet</p>
+            </div>
+          </label>
+          <label class="payment-option" data-value="cod">
+            <input type="radio" name="payment" value="cod">
+            <span class="pay-icon">💵</span>
+            <div class="pay-info">
+              <h5>COD (Cash on Delivery)</h5>
+              <p>Bayar saat pesanan tiba — Area Tangerang</p>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Ringkasan -->
+      <div class="checkout-section">
+        <h4>🧾 Ringkasan Pesanan</h4>
+        <div class="order-summary" id="orderSummary"></div>
+      </div>
+    </div>
+
+    <div class="checkout-actions">
+      <button class="btn-cancel" onclick="closeCheckout()">← Kembali</button>
+      <button class="btn-confirm" onclick="processPayment()">Konfirmasi Pesanan</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PAYMENT RESULT MODAL ================= -->
+<div class="payment-result" id="paymentResult">
+  <div class="payment-result-content">
+    <div class="success-icon">🎉</div>
+    <h3>Pesanan Berhasil Dibuat!</h3>
+    <p>Silakan selesaikan pembayaran sesuai instruksi di bawah ini.</p>
+
+    <div class="payment-detail" id="paymentDetail"></div>
+
+    <a href="#" target="_blank" class="btn-wa-confirm" id="waConfirmBtn">
+      💬 Konfirmasi via WhatsApp
+    </a>
+    <button class="btn-close-result" onclick="closePaymentResult()">
+      Tutup & Lanjut Belanja
+    </button>
+  </div>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast">Produk ditambahkan ke keranjang!</div>
+
+<script>
+/* ================= DATA PRODUK ================= */
+const products = [
+  { id: 1, name: "Belgian Chocolate Molten Cake", category: "Cakes", price: 85000, status: "ready",
+    desc: "Cokelat Belgia lumer dengan tekstur moist",
+    img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600" },
+  { id: 2, name: "Strawberry Shortcake", category: "Cakes", price: 95000, status: "ready",
+    desc: "Sponge cake lembut dengan stroberi segar",
+    img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600" },
+  { id: 3, name: "Butter Croissant", category: "Pastries", price: 35000, status: "ready",
+    desc: "Croissant mentega Prancis yang flaky",
+    img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600" },
+  { id: 4, name: "Pain au Chocolat", category: "Pastries", price: 40000, status: "po",
+    desc: "Pastry berlapis dengan isian cokelat",
+    img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" },
+  { id: 5, name: "Dessert Box Tiramisu", category: "Dessert Box", price: 75000, status: "ready",
+    desc: "Tiramisu creamy dengan kopi Italia",
+    img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600" },
+  { id: 6, name: "Dessert Box Mango Sticky", category: "Dessert Box", price: 70000, status: "ready",
+    desc: "Mangga manis dengan ketan dan saus kelapa",
+    img: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600" },
+  { id: 7, name: "Choco Chip Cookies", category: "Cookies", price: 55000, status: "ready",
+    desc: "Cookies renyah dengan cokelat chip melimpah",
+    img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600" },
+  { id: 8, name: "Matcha Almond Cookies", category: "Cookies", price: 60000, status: "po",
+    desc: "Cookies matcha dengan almond panggang",
+    img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600" },
+  { id: 9, name: "Vegan Chocolate Cake", category: "Vegan", price: 90000, status: "ready",
+    desc: "Cake cokelat tanpa telur & susu, tetap moist",
+    img: "https://munchingwithmariyah.com/wp-content/uploads/2023/12/IMG_8613-1-1200x1200.jpg" },
+  { id: 10, name: "Gluten-Free Banana Bread", category: "Vegan", price: 65000, status: "ready",
+    desc: "Banana bread tanpa gluten, manis alami pisang",
+    img: "https://cdn.loveandlemons.com/wp-content/uploads/2020/09/gluten-free-banana-bread-recipe.jpg" },
+  { id: 11, name: "Red Velvet Cake", category: "Cakes", price: 100000, status: "ready",
+    desc: "Red velvet lembut dengan cream cheese frosting",
+    img: "https://images.unsplash.com/photo-1586985289906-406988974504?w=600" },
+  { id: 12, name: "Cinnamon Roll", category: "Pastries", price: 45000, status: "ready",
+    desc: "Cinnamon roll hangat dengan glaze manis",
+    img: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=600" }
+];
+
+/* ================= DATA PEMBAYARAN ================= */
+const paymentMethods = {
+  bca: {
+    label: "Transfer Bank BCA",
+    icon: "🏦",
+    rekening: "1234567890",
+    atasNama: "Dessertkchaww",
+    instruksi: "Transfer ke rekening BCA di atas, lalu kirim bukti transfer via WhatsApp."
+  },
+  mandiri: {
+    label: "Transfer Bank Mandiri",
+    icon: "🏦",
+    rekening: "9876543210",
+    atasNama: "Dessertkchaww",
+    instruksi: "Transfer ke rekening Mandiri di atas, lalu kirim bukti transfer via WhatsApp."
+  },
+  bni: {
+    label: "Transfer Bank BNI",
+    icon: "🏦",
+    rekening: "1122334455",
+    atasNama: "Dessertkchaww",
+    instruksi: "Transfer ke rekening BNI di atas, lalu kirim bukti transfer via WhatsApp."
+  },
+  gopay: {
+    label: "GoPay / OVO / DANA",
+    icon: "📱",
+    rekening: "085150964596",
+    atasNama: "Dessertkchaww",
+    instruksi: "Transfer ke nomor e-wallet di atas (GoPay/OVO/DANA), lalu kirim bukti via WhatsApp."
+  },
+  qris: {
+    label: "QRIS",
+    icon: "📸",
+    rekening: "-",
+    atasNama: "Dessertkchaww",
+    instruksi: "Scan QR Code yang kami kirim via WhatsApp setelah konfirmasi pesanan."
+  },
+  cod: {
+    label: "COD (Cash on Delivery)",
+    icon: "💵",
+    rekening: "-",
+    atasNama: "Dessertkchaww",
+    instruksi: "Siapkan uang tunai sesuai total pesanan. Pembayaran dilakukan saat pesanan tiba."
+  }
+};
+
+/* ================= STATE ================= */
+let cart = [];
+let activeCategory = 'all';
+let selectedPayment = null;
+
+/* ================= RENDER PRODUK ================= */
+function renderProducts() {
+  const grid = document.getElementById('productGrid');
+  const search = document.getElementById('searchInput').value.toLowerCase();
+
+  const filtered = products.filter(p => {
+    const matchCat = activeCategory === 'all' || p.category === activeCategory;
+    const matchSearch = p.name.toLowerCase().includes(search) || p.desc.toLowerCase().includes(search);
+    return matchCat && matchSearch;
+  });
+
+  grid.innerHTML = filtered.map((p, i) => `
+    <div class="product-card" style="transition-delay:${i * 60}ms">
+      <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy">
+      <div class="product-info">
+        <span class="badge ${p.status === 'ready' ? 'ready' : 'po'}">
+          ${p.status === 'ready' ? '✓ Ready Stock' : '⏳ Pre-Order'}
+        </span>
+        <h4>${p.name}</h4>
+        <p class="desc">${p.desc}</p>
+        <div class="price-row">
+          <span class="price">Rp ${p.price.toLocaleString('id-ID')}</span>
+          <button class="add-btn" onclick="addToCart(${p.id})">+ Keranjang</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  setTimeout(() => {
+    document.querySelectorAll('.product-card').forEach(card => card.classList.add('show'));
+  }, 100);
+}
+
+/* ================= FILTER ================= */
+function filterCategory(cat, btn) {
+  activeCategory = cat;
+  if (btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  } else {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.cat === cat);
+    });
+  }
+  renderProducts();
+  document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ================= CART ================= */
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(item => item.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...product, qty: 1 });
+  updateCart();
+  showToast(`${product.name} ditambahkan! 🍰`);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  updateCart();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(id);
+  else updateCart();
+}
+
+function updateCart() {
+  const count = cart.reduce((sum, i) => sum + i.qty, 0);
+  const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = 'Rp ' + total.toLocaleString('id-ID');
+
+  const itemsEl = document.getElementById('cartItems');
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<p style="text-align:center;color:#aaa;margin-top:40px;">Keranjang masih kosong 🍰</p>';
+  } else {
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <img src="${item.img}" alt="${item.name}">
+        <div class="cart-item-info">
+          <h5>${item.name}</h5>
+          <div class="price">Rp ${item.price.toLocaleString('id-ID')}</div>
+          <div class="qty-controls">
+            <button onclick="changeQty(${item.id}, -1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty(${item.id}, 1)">+</button>
+          </div>
+        </div>
+        <button class="remove-item" onclick="removeFromCart(${item.id})">🗑️</button>
+      </div>
+    `).join('');
+  }
+}
+
+function toggleCart() {
+  document.getElementById('cartModal').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+/* ================= CHECKOUT ================= */
+function openCheckout() {
+  if (cart.length === 0) {
+    showToast('Keranjang masih kosong!');
+    return;
+  }
+  // Tutup cart, buka checkout
+  document.getElementById('cartModal').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  renderOrderSummary();
+  document.getElementById('checkoutModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderOrderSummary() {
+  const summary = document.getElementById('orderSummary');
+  const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const ongkir = subtotal >= 150000 ? 0 : 15000;
+  const total = subtotal + ongkir;
+
+  summary.innerHTML = `
+    ${cart.map(item => `
+      <div class="order-item">
+        <span>${item.name} × ${item.qty}</span>
+        <span>Rp ${(item.price * item.qty).toLocaleString('id-ID')}</span>
+      </div>
+    `).join('')}
+    <div class="order-item">
+      <span>Ongkos Kirim</span>
+      <span>${ongkir === 0 ? 'GRATIS 🎉' : 'Rp ' + ongkir.toLocaleString('id-ID')}</span>
+    </div>
+    <div class="order-item total">
+      <span>Total Bayar</span>
+      <span>Rp ${total.toLocaleString('id-ID')}</span>
+    </div>
+  `;
+}
+
+/* ================= PAYMENT SELECTION ================= */
+document.querySelectorAll('.payment-option').forEach(option => {
+  option.addEventListener('click', () => {
+    document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+    option.classList.add('selected');
+    option.querySelector('input[type="radio"]').checked = true;
+    selectedPayment = option.dataset.value;
+  });
+});
+
+/* ================= PROCESS PAYMENT ================= */
+function processPayment() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  const note = document.getElementById('custNote').value.trim();
+
+  if (!name || !phone || !address) {
+    showToast('⚠️ Mohon isi nama, no. WA, dan alamat!');
+    return;
+  }
+  if (!selectedPayment) {
+    showToast('⚠️ Pilih metode pembayaran dulu ya!');
+    return;
+  }
+
+  // Hitung total
+  const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const ongkir = subtotal >= 150000 ? 0 : 15000;
+  const total = subtotal + ongkir;
+
+  const method = paymentMethods[selectedPayment];
+  const orderId = 'DKC-' + Date.now().toString().slice(-8);
+
+  // Tampilkan hasil
+  const detailEl = document.getElementById('paymentDetail');
+  let rekeningHTML = '';
+  if (method.rekening !== '-') {
+    rekeningHTML = `
+      <div class="rekening-box">
+        <div>
+          <div style="font-size:0.75rem;color:#888;">${method.label}</div>
+          <div class="num">${method.rekening}</div>
+          <div style="font-size:0.75rem;color:#888;">a/n ${method.atasNama}</div>
+        </div>
+        <button class="copy-btn" onclick="copyRekening('${method.rekening}')">📋 Copy</button>
+      </div>
+    `;
+  }
+
+  detailEl.innerHTML = `
+    <h5>📋 Detail Pesanan #${orderId}</h5>
+    <div class="row"><span>Nama</span><strong>${name}</strong></div>
+    <div class="row"><span>WhatsApp</span><strong>${phone}</strong></div>
+    <div class="row"><span>Alamat</span><strong style="text-align:right;max-width:60%;">${address}</strong></div>
+    ${note ? `<div class="row"><span>Catatan</span><strong>${note}</strong></div>` : ''}
+    <div class="row"><span>Metode Bayar</span><strong>${method.icon} ${method.label}</strong></div>
+    <div class="row" style="border-top:1px dashed #ddd;margin-top:8px;padding-top:8px;">
+      <span>Total Bayar</span><strong style="color:#b87333;font-size:1.05rem;">Rp ${total.toLocaleString('id-ID')}</strong>
+    </div>
+    ${rekeningHTML}
+    <p style="font-size:0.82rem;color:#6b6b6b;margin-top:12px;font-style:italic;">💡 ${method.instruksi}</p>
+  `;
+
+  // Generate WhatsApp message
+  let waMsg = `Halo Dessertkchaww! Saya ingin konfirmasi pesanan:%0A%0A`;
+  waMsg += `*Order ID:* ${orderId}%0A`;
+  waMsg += `*Nama:* ${name}%0A`;
+  waMsg += `*No. WA:* ${phone}%0A`;
+  waMsg += `*Alamat:* ${address}%0A`;
+  if (note) waMsg += `*Catatan:* ${note}%0A`;
+  waMsg += `%0A*Pesanan:*%0A`;
+  cart.forEach(item => {
+    waMsg += `• ${item.name} x${item.qty} = Rp ${(item.price * item.qty).toLocaleString('id-ID')}%0A`;
+  });
+  waMsg += `%0A*Ongkir:* ${ongkir === 0 ? 'GRATIS' : 'Rp ' + ongkir.toLocaleString('id-ID')}%0A`;
+  waMsg += `*Total Bayar:* Rp ${total.toLocaleString('id-ID')}%0A`;
+  waMsg += `*Metode Pembayaran:* ${method.label}%0A%0A`;
+  waMsg += `Mohon dikonfirmasi. Terima kasih! 🙏`;
+
+  document.getElementById('waConfirmBtn').href = `https://wa.me/6285150964596?text=${waMsg}`;
+
+  // Tampilkan modal hasil
+  document.getElementById('paymentResult').classList.add('open');
+}
+
+function copyRekening(num) {
+  navigator.clipboard.writeText(num).then(() => {
+    showToast('Nomor rekening berhasil dicopy! 📋');
+  }).catch(() => {
+    showToast('Gagal copy, silakan catat manual.');
+  });
+}
+
+function closePaymentResult() {
+  document.getElementById('paymentResult').classList.remove('open');
+  document.getElementById('checkoutModal').classList.remove('open');
+  document.body.style.overflow = '';
+  // Reset
+  cart = [];
+  selectedPayment = null;
+  document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.shipping-form input, .shipping-form textarea').forEach(i => i.value = '');
+  updateCart();
+  showToast('Terima kasih sudah berbelanja! 🍰');
+}
+
+/* ================= FAQ ================= */
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+/* ================= FORM CUSTOM ================= */
+function submitCustom(e) {
+  e.preventDefault();
+  showToast('Permintaan custom terkirim! Kami akan segera hubungi Anda 💌');
+  e.target.reset();
+}
+
+/* ================= NAVIGASI MOBILE ================= */
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+/* ================= TOAST ================= */
+let toastTimer;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+/* ================= SCROLL ANIMATION ================= */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('show');
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section-title, .section-sub').forEach(el => observer.observe(el));
+
+/* ================= INIT ================= */
+renderProducts();
+updateCart();
+</script>
+</body>
+</html>
