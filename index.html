@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  var de=document.documentElement,c=de.className||'';c+=' js';
+  try{
+    var f=document.createElement('div');
+    f.style.cssText='display:flex;flex-direction:column;row-gap:1px;position:absolute';
+    f.appendChild(document.createElement('div'));f.appendChild(document.createElement('div'));
+    de.appendChild(f);var ok=f.scrollHeight===1;de.removeChild(f);
+    if(!ok)c+=' no-fg';
+  }catch(e){}
+  try{
+    var n=navigator,cn=n.connection||{};
+    if((n.deviceMemory&&n.deviceMemory<=2)||(n.hardwareConcurrency&&n.hardwareConcurrency<=2)||cn.saveData||/(^|-)2g$/.test(cn.effectiveType||'')||!('IntersectionObserver' in window))c+=' lite';
+  }catch(e){}
+  de.className=c;
+  var PH="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F5EDE6'/%3E%3Cpath d='M110 230h180v70a10 10 0 0 1-10 10H120a10 10 0 0 1-10-10z' fill='%23D7BFAE'/%3E%3Ccircle cx='200' cy='150' r='9' fill='%23E8A87C'/%3E%3C/svg%3E";
+  window.imgFail=function(i){i.onerror=null;i.removeAttribute('srcset');i.removeAttribute('sizes');i.src=PH;};
+})();
+try{var t=localStorage.getItem('dessertkchaww_theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFDF9">
+<title>Dessertkchaww — Manis di Setiap Gigitan</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%238FA97B'/%3E%3Cpath d='M20 45 Q50 15 80 45 L80 80 Q50 90 20 80 Z' fill='%23FFFDF9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & VARIABEL ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#6B4F3F;--primary-dark:#3A2C23;--primary-contrast:#FFFFFF;
+  --accent:#B8957F;--accent-light:#D7CCC8;--amber:#C99B72;
+  --sage:#8FA97B;--sage-dark:#6B8259;--sage-light:#DCE5D0;--sage-soft:rgba(143,169,123,.12);
+  --terracotta:#C87755;--terracotta-soft:rgba(200,119,85,.12);
+  --bg:#FFFDF9;--card-bg:#FFFFFF;--text:#4A4A4A;--text-muted:#8B8680;--border:#EDE8E2;
+  --success:#10b981;--danger:#ef4444;
+  --shadow-xs:0 1px 2px rgba(74,74,74,.04);
+  --shadow-sm:0 2px 8px rgba(74,74,74,.05);
+  --shadow:0 4px 16px rgba(74,74,74,.06);
+  --shadow-md:0 8px 24px rgba(74,74,74,.08);
+  --shadow-lg:0 16px 40px rgba(74,74,74,.10);
+  --shadow-depth:0 1px 2px rgba(58,44,35,.04),0 4px 12px rgba(58,44,35,.05),0 16px 40px -8px rgba(58,44,35,.08);
+  --shadow-depth-hover:0 2px 6px rgba(58,44,35,.06),0 12px 28px rgba(58,44,35,.10),0 24px 56px -12px rgba(58,44,35,.14);
+  --radius:12px;--radius-md:16px;--radius-lg:20px;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --header-bg:rgba(255,253,249,.88);--input-bg:#FAF7F3;--soft-bg:#FAF7F3;--hover-bg:#F5F0EA;
+  --safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);
+  --container-pad:clamp(16px,4vw,24px);
+}
+[data-theme="dark"]{
+  --primary:#D7CCC8;--primary-dark:#0F0D0C;--primary-contrast:#2A2320;
+  --accent:#C9A99A;--accent-light:#E8DDD8;--amber:#E0BC94;
+  --sage:#A8BC94;--sage-dark:#C2D1B0;--sage-light:#2E3A24;--sage-soft:rgba(168,188,148,.16);
+  --terracotta:#D99677;--terracotta-soft:rgba(217,150,119,.16);
+  --bg:#1A1816;--card-bg:#242120;--text:#E8E4E0;--text-muted:#A8A29E;--border:#353130;
+  --shadow-xs:0 1px 2px rgba(0,0,0,.3);--shadow-sm:0 2px 8px rgba(0,0,0,.35);
+  --shadow:0 4px 16px rgba(0,0,0,.4);--shadow-md:0 8px 24px rgba(0,0,0,.5);
+  --shadow-lg:0 16px 40px rgba(0,0,0,.6);
+  --shadow-depth:0 1px 2px rgba(0,0,0,.3),0 4px 12px rgba(0,0,0,.4),0 16px 40px -8px rgba(0,0,0,.5);
+  --shadow-depth-hover:0 2px 6px rgba(0,0,0,.4),0 12px 28px rgba(0,0,0,.5),0 24px 56px -12px rgba(0,0,0,.6);
+  --header-bg:rgba(26,24,22,.88);--input-bg:#1A1816;--soft-bg:#1F1C1A;--hover-bg:#2E2A27;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-padding-top:76px}
+body{
+  font-family:'Poppins',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);
+  overflow-x:hidden;transition:background-color .35s ease,color .35s ease;line-height:1.65;
+  -webkit-tap-highlight-color:transparent;position:relative;min-height:100vh;font-weight:400;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse at 10% 0%,rgba(201,155,114,.07),transparent 50%),
+    radial-gradient(ellipse at 90% 100%,rgba(143,169,123,.06),transparent 50%);
+  pointer-events:none;z-index:-1;
+}
+[data-theme="dark"] body::before{
+  background:
+    radial-gradient(ellipse at 10% 0%,rgba(224,188,148,.05),transparent 50%),
+    radial-gradient(ellipse at 90% 100%,rgba(168,188,148,.04),transparent 50%);
+}
+h1,h2,h3,.logo{font-family:'Playfair Display',Georgia,serif;letter-spacing:-.01em}
+h4,h5{font-family:'Poppins',system-ui,sans-serif}
+img,video,canvas{max-width:100%;height:auto}
+input,select,textarea,button{max-width:100%}
+h1,h2,h3,h4,h5,p,.desc,.review-comment,.faq-text,.faq-answer,.pay-info,.order-item span,.cart-item-info h5,.review-name{overflow-wrap:break-word;word-wrap:break-word}
+section{scroll-margin-top:76px}
+
+/* ============ FALLING DECOR ============ */
+.falling-layer{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden;opacity:1;transition:opacity .5s ease}
+.falling-layer.hidden-at-home{opacity:0}
+.falling-item{position:absolute;top:-80px;opacity:.14;color:var(--accent);animation:fall linear infinite;user-select:none;will-change:transform}
+[data-theme="dark"] .falling-item{opacity:.09}
+@keyframes fall{0%{transform:translateY(-80px) rotate(0);opacity:0}10%{opacity:.14}85%{opacity:.14}100%{transform:translateY(105vh) rotate(360deg);opacity:0}}
+.lite .falling-layer{display:none}
+@media (prefers-reduced-motion:reduce){.falling-layer{display:none}}
+
+/* ============ NAVBAR ============ */
+header{
+  position:sticky;top:0;z-index:1000;background:var(--header-bg);
+  backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);
+  box-shadow:var(--shadow-xs);border-bottom:1px solid var(--border);
+  transition:background-color .35s ease,border-color .35s ease;
+  padding-left:var(--safe-left);padding-right:var(--safe-right);
+}
+.lite header{background:var(--bg)}
+.lite *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px var(--container-pad);gap:12px}
+.logo{font-size:clamp(1.25rem,2.5vw,1.55rem);font-weight:700;color:var(--text);cursor:pointer;white-space:nowrap;touch-action:manipulation}
+.logo span{color:var(--sage)}
+.nav-links{display:flex;gap:26px;list-style:none;transition:all .3s var(--ease)}
+.nav-links a{text-decoration:none;color:var(--text-muted);font-weight:500;position:relative;padding:8px 0;transition:color .25s var(--ease);font-size:.9rem;touch-action:manipulation}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--sage);border-radius:2px;transition:width .3s var(--ease)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--sage)!important;font-weight:600}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.theme-toggle,.hamburger{
+  background:var(--card-bg);color:var(--text);border:1px solid var(--border);
+  width:42px;height:42px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .3s var(--ease);padding:0;box-shadow:var(--shadow-xs);flex-shrink:0;touch-action:manipulation;
+}
+.theme-toggle:hover{background:var(--sage);color:#fff;border-color:var(--sage);transform:rotate(15deg)}
+[data-theme="dark"] .theme-toggle:hover{color:#2A2320}
+.theme-toggle svg{width:20px;height:20px}
+.hamburger{display:none;flex-direction:column;gap:5px}
+.hamburger span{width:22px;height:2.5px;background:var(--text);border-radius:2px;transition:.3s var(--ease)}
+.cart-btn{
+  position:relative;background:var(--primary);color:var(--primary-contrast);
+  border:none;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:600;font-size:.88rem;
+  transition:all .3s var(--ease);box-shadow:var(--shadow-xs);min-height:42px;white-space:nowrap;
+  touch-action:manipulation;display:inline-flex;align-items:center;gap:6px;font-family:inherit;
+}
+.cart-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm);opacity:.92}
+.cart-btn svg{width:17px;height:17px}
+.cart-count{
+  position:absolute;top:-6px;right:-6px;background:var(--sage);color:#fff;border-radius:50%;
+  min-width:22px;height:22px;padding:0 6px;font-size:.72rem;display:flex;align-items:center;justify-content:center;
+  font-weight:bold;box-shadow:0 0 0 2px var(--card-bg);
+}
+[data-theme="dark"] .cart-count{color:#2A2320}
+.cart-count.pop{animation:cartPop .45s var(--ease)}
+@keyframes cartPop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+
+/* ============ HERO ============ */
+.hero{
+  max-width:1200px;margin:clamp(32px,5vw,64px) auto;padding:0 var(--container-pad);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;
+}
+.hero-text h1{font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1.15;color:var(--text);animation:slideUp 1s var(--ease);font-weight:700}
+.hero-text h1 span{color:var(--sage);font-style:italic}
+.hero-text p{margin:clamp(16px,2vw,22px) 0 clamp(22px,3vw,34px);font-size:clamp(.95rem,1.4vw,1.05rem);color:var(--text-muted);line-height:1.75;animation:slideUp 1.2s var(--ease);max-width:480px}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--primary-contrast);
+  padding:14px 30px;border-radius:12px;text-decoration:none;font-weight:600;box-shadow:var(--shadow-sm);
+  transition:all .3s var(--ease);animation:slideUp 1.4s var(--ease);border:none;cursor:pointer;
+  min-height:48px;font-family:inherit;font-size:.95rem;touch-action:manipulation;
+}
+.cta-btn:hover{background:var(--sage);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+[data-theme="dark"] .cta-btn:hover{color:#2A2320}
+.cta-btn svg{width:18px;height:18px}
+.hero-img{
+  border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg),0 0 0 1px rgba(184,149,127,.10),0 24px 60px -12px rgba(201,155,114,.35);
+  animation:floatIn 1.2s var(--ease),softFloat 6s ease-in-out infinite 1.5s;
+  border:1px solid var(--border);position:relative;aspect-ratio:5/4;width:100%;max-height:480px;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);display:block}
+.hero-img:hover img{transform:scale(1.04)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(58,44,35,.15) 100%);pointer-events:none}
+@keyframes softFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* ============ SECTION UMUM ============ */
+section{padding:clamp(64px,9vw,110px) var(--container-pad);max-width:1200px;margin:auto;position:relative;z-index:2}
+footer{position:relative;z-index:2}
+.section-title{text-align:center;font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:14px;color:var(--text);opacity:0;transform:translateY(30px);transition:all .8s var(--ease);font-weight:700}
+.section-title.show{opacity:1;transform:translateY(0)}
+.section-title::after{content:'';display:block;width:0;height:3px;margin:12px auto 0;border-radius:3px;background:var(--sage);transition:width .8s var(--ease)}
+.section-title.show::after{width:48px}
+.section-sub{text-align:center;color:var(--text-muted);margin-bottom:clamp(32px,5vw,56px);opacity:0;transform:translateY(30px);transition:all .8s var(--ease) .15s;font-size:clamp(.9rem,1.3vw,1rem);line-height:1.7;max-width:600px;margin-left:auto;margin-right:auto}
+.section-sub.show{opacity:1;transform:translateY(0)}
+
+/* ============ KATEGORI ============ */
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:clamp(12px,2vw,20px)}
+.category-card{
+  background:var(--card-bg);border-radius:var(--radius-md);padding:clamp(24px,3vw,32px) 14px;text-align:center;
+  box-shadow:var(--shadow-depth);cursor:pointer;transition:all .3s var(--ease);border:1px solid var(--border);
+  min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  touch-action:manipulation;gap:10px;
+}
+.category-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-depth-hover);border-color:var(--accent-light)}
+.category-card:nth-child(3n+2):hover{border-color:var(--sage);box-shadow:0 12px 28px var(--sage-soft)}
+.category-card .emoji{color:var(--accent);display:inline-flex;align-items:center;justify-content:center;line-height:1}
+.category-card .emoji svg{width:30px;height:30px}
+.category-card h4{font-size:clamp(.82rem,1.2vw,.92rem);color:var(--text);font-weight:600;line-height:1.35}
+
+/* ============ PRODUK & SEARCH ============ */
+.filter-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:clamp(24px,3vw,36px)}
+.filter-btn{background:var(--card-bg);border:1px solid var(--border);color:var(--text-muted);padding:10px 20px;border-radius:10px;cursor:pointer;font-weight:500;font-size:.86rem;transition:all .3s var(--ease);min-height:44px;touch-action:manipulation;white-space:nowrap;font-family:inherit}
+.filter-btn:hover{color:var(--text);border-color:var(--accent-light)}
+.filter-btn.active{background:var(--primary);color:var(--primary-contrast);border-color:var(--primary);box-shadow:var(--shadow-sm)}
+.search-box{display:flex;justify-content:center;margin-bottom:28px}
+.search-wrap{position:relative;width:100%;max-width:480px}
+.search-wrap svg{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--text-muted);pointer-events:none}
+.search-box input{width:100%;padding:15px 24px 15px 50px;border-radius:999px;border:1px solid var(--border);outline:none;font-size:.95rem;transition:all .3s var(--ease);background:var(--soft-bg);color:var(--text);box-shadow:var(--shadow-xs);min-height:52px;font-family:inherit}
+.search-box input:focus{border-color:var(--sage);background:var(--card-bg);box-shadow:0 0 0 4px var(--sage-soft)}
+.search-box input::placeholder{color:var(--text-muted)}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:clamp(16px,2.4vw,28px)}
+.product-card{
+  background:var(--card-bg);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-depth);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),opacity .5s var(--ease);
+  opacity:0;transform:translateY(30px);border:1px solid var(--border);display:flex;flex-direction:column;will-change:transform;
+}
+.product-card.show{opacity:1;transform:translateY(0)}
+.product-card:hover{transform:translateY(-8px) scale(1.008);box-shadow:var(--shadow-depth-hover);border-color:var(--accent-light)}
+.product-media{position:relative;width:100%;height:0;padding-top:100%;overflow:hidden;background:var(--soft-bg)}
+.product-media::before{content:'';position:absolute;top:0;left:-70%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .7s ease;z-index:2;pointer-events:none}
+.product-card:hover .product-media::before{left:130%}
+.product-media::after{content:'';position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,transparent,rgba(58,44,35,.18));pointer-events:none;z-index:1}
+.product-media .product-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);display:block}
+.product-card:hover .product-img{transform:scale(1.05)}
+.media-cat{position:absolute;left:10px;top:10px;z-index:3;background:rgba(255,253,249,.93);color:#3A2C23;font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.product-info{padding:clamp(16px,2vw,22px);flex:1;display:flex;flex-direction:column}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;padding:5px 10px;border-radius:6px;font-weight:600;margin-bottom:12px;letter-spacing:.2px;align-self:flex-start;line-height:1}
+.badge.ready{background:rgba(16,185,129,.1);color:#059669}
+.badge.po{background:var(--terracotta-soft);color:#A87A50}
+.badge.vegan{background:var(--sage-soft);color:var(--sage-dark)}
+[data-theme="dark"] .badge.ready{background:rgba(16,185,129,.18);color:#6ee7b7}
+[data-theme="dark"] .badge.po{background:rgba(224,188,148,.16);color:#E0BC94}
+[data-theme="dark"] .badge.vegan{background:rgba(168,188,148,.18);color:#C2D1B0}
+.product-info h4{font-size:clamp(.94rem,1.4vw,1.04rem);margin-bottom:6px;color:var(--text);font-weight:600;line-height:1.35}
+.product-info .desc{font-size:clamp(.78rem,1vw,.84rem);color:var(--text-muted);margin-bottom:16px;line-height:1.55;flex:1}
+.price-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:auto}
+.price{color:var(--text);font-weight:700;font-size:clamp(.94rem,1.3vw,1.04rem)}
+.btn-group{display:flex;gap:8px;align-items:center}
+.add-btn{background:var(--soft-bg);color:var(--text);border:1px solid var(--border);border-radius:50%;width:38px;height:38px;cursor:pointer;transition:all .25s var(--ease);touch-action:manipulation;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;padding:0}
+.add-btn svg{width:18px;height:18px}
+.add-btn:hover{background:var(--sage-light);color:var(--text);border-color:var(--sage);transform:translateY(-2px)}
+.buy-btn{background:var(--sage);color:#fff;border:none;padding:0 16px;border-radius:999px;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .25s var(--ease);height:38px;box-shadow:var(--shadow-xs);touch-action:manipulation;font-family:inherit}
+[data-theme="dark"] .buy-btn{color:#2A2320}
+.buy-btn:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+
+/* ============ STEP ORDER ============ */
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:0 auto 28px}
+.how-step{display:flex;align-items:center;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;box-shadow:var(--shadow-xs)}
+.how-num{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--sage);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin-right:12px}
+.how-step b{display:block;color:var(--text);font-size:.9rem;line-height:1.3}
+.how-step small{display:block;font-size:.78rem;color:var(--text-muted);line-height:1.4}
+
+/* ============ FEATURES ============ */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(16px,2.4vw,24px)}
+.feature-card{background:var(--card-bg);border-radius:var(--radius-md);padding:clamp(28px,3.5vw,40px) clamp(20px,2.5vw,28px);text-align:center;box-shadow:var(--shadow-depth);transition:all .3s var(--ease);border:1px solid var(--border)}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-depth-hover);border-color:var(--accent-light)}
+.feature-card .icon{color:var(--accent);margin-bottom:16px;display:inline-flex;align-items:center;justify-content:center}
+.feature-card:nth-child(2n) .icon{color:var(--sage)}
+.feature-card .icon svg{width:32px;height:32px}
+.feature-card h4{margin-bottom:8px;color:var(--text);font-weight:600;font-size:1rem}
+.feature-card p{font-size:.87rem;color:var(--text-muted);line-height:1.65}
+
+/* ============ TESTIMONI ============ */
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(16px,2.4vw,24px)}
+.testimonial{background:var(--card-bg);border-radius:var(--radius-md);padding:clamp(24px,3vw,32px);box-shadow:var(--shadow-sm);position:relative;transition:all .3s var(--ease);border:1px solid var(--border);border-left:3px solid var(--accent)}
+.testimonial:nth-child(2){border-left-color:var(--sage)}
+.testimonial:nth-child(3){border-left-color:var(--terracotta)}
+.testimonial:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.testimonial::before{content:'❝';font-size:2.6rem;color:var(--border);position:absolute;top:6px;left:22px;line-height:1;font-family:Georgia,serif}
+.testimonial p{margin:18px 0 14px;font-style:italic;color:var(--text-muted);line-height:1.7;font-size:.94rem}
+.testimonial .name{font-weight:600;color:var(--text);font-size:.9rem}
+.stars{color:var(--amber);letter-spacing:2px}
+
+/* ============ ULASAN ============ */
+.review-summary{display:grid;grid-template-columns:200px 1fr;gap:clamp(20px,3vw,32px);background:linear-gradient(135deg,#3A2C23 0%,#6B4F3F 100%);color:#fff;padding:clamp(24px,3.5vw,36px);border-radius:var(--radius-lg);margin-bottom:32px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+[data-theme="dark"] .review-summary{background:linear-gradient(135deg,#1F1C1A 0%,#2E2A27 100%);border:1px solid var(--border)}
+.review-summary::before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(143,169,123,.35),transparent 70%);border-radius:50%}
+.rating-big{text-align:center;position:relative;z-index:1}
+.avg-num{font-size:clamp(2.6rem,6vw,3.6rem);font-weight:700;color:#E8DDD8;line-height:1;font-family:'Playfair Display',serif}
+.stars-big{font-size:clamp(1rem,2vw,1.15rem);color:var(--amber);letter-spacing:3px;margin:8px 0}
+.total-reviews{font-size:.82rem;opacity:.85}
+.rating-bars{display:flex;flex-direction:column;gap:8px;justify-content:center;position:relative;z-index:1}
+.rating-bar{display:flex;align-items:center;gap:10px;font-size:.84rem}
+.rating-bar .label{width:38px;font-weight:600}
+.rating-bar .bar{flex:1;height:7px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden}
+.rating-bar .bar-fill{height:100%;background:linear-gradient(90deg,var(--amber),var(--sage));border-radius:4px;transition:width .8s var(--ease)}
+.rating-bar .count{width:28px;text-align:right;opacity:.85}
+.review-layout{display:grid;grid-template-columns:340px 1fr;gap:28px}
+.reviews-col{min-width:0}
+.review-form-card{background:var(--card-bg);padding:clamp(22px,2.6vw,28px);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);position:sticky;top:92px;align-self:start;border:1px solid var(--border);transition:border-color .25s var(--ease),background-color .35s ease}
+.review-form-card:hover{border-color:var(--accent-light);box-shadow:var(--shadow)}
+.review-form-card h3{color:var(--text);margin-bottom:20px;font-size:clamp(1.05rem,1.6vw,1.18rem);font-weight:700}
+.review-form-card form{display:grid;gap:12px}
+.review-form-card input,.review-form-card select,.review-form-card textarea{padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:1rem;outline:none;transition:all .25s var(--ease);background:var(--input-bg);color:var(--text);min-height:46px;width:100%}
+.review-form-card input::placeholder,.review-form-card textarea::placeholder{color:var(--text-muted)}
+.review-form-card input:focus,.review-form-card select:focus,.review-form-card textarea:focus{border-color:var(--sage);background:var(--card-bg);box-shadow:0 0 0 3px var(--sage-soft)}
+.review-form-card textarea{min-height:90px;resize:none!important}
+.review-form-card button{background:var(--primary);color:var(--primary-contrast);padding:14px;border:none;border-radius:10px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);font-size:.92rem;display:inline-flex;align-items:center;justify-content:center;gap:7px;box-shadow:var(--shadow-xs);min-height:48px;touch-action:manipulation;font-family:inherit}
+.review-form-card button svg{width:16px;height:16px}
+.review-form-card button:hover:not(:disabled){background:var(--sage);color:#fff;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+[data-theme="dark"] .review-form-card button:hover:not(:disabled){color:#2A2320}
+.review-form-card button:disabled{opacity:.7;cursor:wait}
+.star-picker{display:flex;gap:4px;justify-content:center;padding:6px 0}
+.star-picker span{font-size:clamp(1.8rem,3vw,2.1rem);color:#d1d5db;cursor:pointer;transition:all .25s var(--ease);user-select:none;line-height:1;min-width:44px;text-align:center;min-height:44px;display:inline-flex;align-items:center;justify-content:center;touch-action:manipulation}
+[data-theme="dark"] .star-picker span{color:#3a3532}
+.star-picker span:hover,.star-picker span.active{color:var(--amber);transform:scale(1.12)}
+.rating-text{text-align:center;font-size:.8rem;color:var(--text-muted);margin-top:-4px}
+.reviews-list{display:flex;flex-direction:column;gap:14px;max-height:800px;overflow-y:auto;padding-right:6px;overscroll-behavior:contain}
+.reviews-list::-webkit-scrollbar{width:6px}
+.reviews-list::-webkit-scrollbar-track{background:transparent}
+.reviews-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.review-card{background:var(--card-bg);padding:clamp(18px,2vw,24px);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);border-left:3px solid var(--sage);animation:slideUp .5s var(--ease);transition:background-color .35s ease}
+.review-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;gap:12px;flex-wrap:wrap}
+.review-card-header .name-info{display:flex;gap:12px;align-items:center;min-width:0;flex:1}
+.review-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--amber));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.02rem;flex-shrink:0}
+[data-theme="dark"] .review-avatar{color:#2A2320}
+.review-name{font-weight:600;color:var(--text);font-size:.93rem;word-break:break-word}
+.review-meta{font-size:.74rem;color:var(--text-muted);margin-top:2px}
+.review-stars{color:var(--amber);letter-spacing:2px;font-size:.88rem;white-space:nowrap}
+.review-comment{color:var(--text-muted);font-size:.9rem;line-height:1.65;margin-top:8px;word-wrap:break-word;overflow-wrap:break-word}
+.review-product-tag{display:inline-flex;align-items:center;gap:5px;background:var(--sage-soft);color:var(--sage-dark);font-size:.7rem;padding:4px 10px;border-radius:20px;font-weight:600;margin-bottom:8px}
+.review-product-tag svg{width:11px;height:11px}
+.empty-reviews{text-align:center;padding:60px 20px;color:var(--text-muted);background:var(--card-bg);border-radius:var(--radius-md);font-style:italic;border:1px solid var(--border);font-size:.92rem}
+.field-error{border-color:var(--danger)!important;box-shadow:0 0 0 3px rgba(239,68,68,.15)!important}
+
+/* ============ ABOUT ============ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,48px);align-items:center}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border);aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover;display:block}
+.about-text h3{font-size:clamp(1.35rem,2.4vw,1.85rem);margin-bottom:18px;color:var(--text);font-weight:700;line-height:1.3}
+.about-text p{margin-bottom:14px;color:var(--text-muted);line-height:1.8;font-size:.94rem}
+
+/* ============ HAMPERS ============ */
+.hampers{background:linear-gradient(135deg,var(--sage-light),var(--sage-soft));border-radius:var(--radius-lg);padding:clamp(32px,5vw,56px) clamp(20px,4vw,36px);border:1px solid var(--border);transition:background .35s ease;box-shadow:var(--shadow-sm)}
+[data-theme="dark"] .hampers{background:linear-gradient(135deg,rgba(143,169,123,.10),rgba(143,169,123,.03))}
+.hampers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(16px,2.4vw,22px);margin-top:32px}
+.hampers-card{background:var(--card-bg);border-radius:var(--radius-md);padding:clamp(22px,3vw,30px);text-align:center;box-shadow:var(--shadow-depth);transition:all .3s var(--ease);border:1px solid var(--border)}
+.hampers-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-depth-hover);border-color:var(--sage)}
+.hampers-card .icon{color:var(--sage-dark);margin-bottom:14px;display:inline-flex}
+.hampers-card .icon svg{width:30px;height:30px}
+.hampers-card h4{color:var(--text);margin-bottom:8px;font-weight:600;font-size:.98rem}
+.hampers-card p{color:var(--text-muted);font-size:.87rem;line-height:1.6}
+.hampers h3{color:var(--text)!important}
+.custom-form{max-width:600px;margin:36px auto 0;display:grid;gap:14px}
+.custom-form input,.custom-form textarea,.custom-form select{padding:14px 18px;border-radius:10px;border:1px solid var(--border);outline:none;font-family:inherit;font-size:1rem;transition:all .25s var(--ease);background:var(--card-bg);color:var(--text);min-height:48px;width:100%}
+.custom-form input::placeholder,.custom-form textarea::placeholder{color:var(--text-muted)}
+.custom-form input:focus,.custom-form textarea:focus,.custom-form select:focus{border-color:var(--sage);box-shadow:0 0 0 3px var(--sage-soft)}
+.custom-form textarea{resize:none!important}
+.custom-form button{background:var(--primary);color:var(--primary-contrast);border:none;padding:14px;border-radius:10px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);box-shadow:var(--shadow-xs);min-height:48px;touch-action:manipulation;font-family:inherit;font-size:.95rem}
+.custom-form button:hover{background:var(--sage);color:#fff;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+[data-theme="dark"] .custom-form button:hover{color:#2A2320}
+.custom-form button:disabled{opacity:.85;cursor:wait}
+
+/* ============ FAQ ============ */
+.faq-item{background:var(--card-bg);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border);transition:all .25s var(--ease)}
+.faq-item:hover{border-color:var(--sage);box-shadow:var(--shadow-sm)}
+.faq-question{padding:clamp(18px,2.2vw,22px) clamp(18px,2.5vw,24px);cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;transition:background .2s var(--ease);color:var(--text);gap:16px;min-height:60px;touch-action:manipulation;font-size:.94rem}
+.faq-question:hover{background:var(--hover-bg)}
+.faq-left{flex:1;display:flex;align-items:flex-start;gap:12px}
+.faq-text{flex:1;line-height:1.55;text-align:left;word-break:break-word}
+.faq-question .faq-ico{color:var(--sage);display:inline-flex;flex-shrink:0;margin-top:2px}
+.faq-question .faq-ico svg{width:18px;height:18px}
+.faq-question .arrow{transition:transform .3s var(--ease);color:var(--sage);flex-shrink:0;display:inline-flex}
+.faq-question .arrow svg{width:18px;height:18px}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s var(--ease),padding .4s var(--ease);padding:0 clamp(18px,2.5vw,24px);color:var(--text-muted);font-size:.9rem;line-height:1.75;text-align:left}
+.faq-item.open .faq-answer{max-height:300px;padding:0 clamp(18px,2.5vw,24px) 22px}
+
+/* ============ KONTAK ============ */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(16px,2.4vw,24px)}
+.contact-card{background:var(--card-bg);border-radius:var(--radius-md);padding:clamp(24px,3vw,32px) clamp(18px,2.2vw,24px);text-align:center;box-shadow:var(--shadow-depth);transition:all .3s var(--ease);border:1px solid var(--border)}
+.contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-depth-hover);border-color:var(--accent-light)}
+.contact-card .icon{color:var(--sage);margin-bottom:14px;display:inline-flex}
+.contact-card .icon svg{width:30px;height:30px}
+.contact-card h4{color:var(--text);margin-bottom:8px;font-weight:600;font-size:1rem}
+.contact-card p{color:var(--text-muted);font-size:.88rem;line-height:1.65}
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;background:#25d366;color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600;transition:all .3s var(--ease);border:none;cursor:pointer;font-size:.88rem;box-shadow:var(--shadow-xs);min-height:48px;touch-action:manipulation;font-family:inherit}
+.wa-btn svg{width:16px;height:16px}
+.wa-btn:hover:not(:disabled){background:#1da851;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.wa-btn:disabled{opacity:.8;cursor:wait}
+.ig-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600;transition:all .3s var(--ease);border:none;cursor:pointer;font-size:.88rem;box-shadow:var(--shadow-xs);min-height:48px;touch-action:manipulation;font-family:inherit}
+.ig-btn svg{width:16px;height:16px}
+.ig-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm);filter:brightness(1.08)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--primary-dark);color:#cbd5e1;text-align:center;padding:clamp(36px,5vw,56px) var(--container-pad);margin-top:40px;border-top:1px solid var(--border)}
+[data-theme="dark"] footer{background:#060504}
+footer .logo{color:#e2e8f0;margin-bottom:12px}
+footer .logo span{color:var(--sage-light)}
+footer p{font-size:.84rem;opacity:.8}
+
+/* ============ CART ============ */
+.cart-modal{position:fixed;top:0;right:-100%;width:min(420px,100vw);height:100dvh;background:var(--card-bg);box-shadow:-12px 0 40px rgba(58,44,35,.15);z-index:2000;transition:right .4s var(--ease),background-color .35s ease;display:flex;flex-direction:column;color:var(--text);max-width:100%}
+.cart-modal.open{right:0}
+.cart-header{padding:clamp(16px,2vw,20px);background:var(--primary);color:var(--primary-contrast);display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--sage);flex-shrink:0}
+.cart-header h3{font-size:1.1rem;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.cart-header h3 svg{width:18px;height:18px}
+.cart-header button{background:rgba(128,128,128,.15);border:none;color:inherit;cursor:pointer;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s var(--ease);touch-action:manipulation}
+.cart-header button svg{width:18px;height:18px}
+.cart-header button:hover{background:rgba(128,128,128,.28)}
+.cart-items{flex:1;overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.cart-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);align-items:center}
+.cart-item img{width:62px;height:62px;object-fit:cover;border-radius:10px;flex-shrink:0}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-info h5{font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:2px;word-wrap:break-word}
+.cart-item-info .price{font-size:.84rem;color:var(--sage-dark);font-weight:700}
+.qty-controls{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty-controls button{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--text);cursor:pointer;font-weight:bold;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .25s var(--ease);touch-action:manipulation;padding:0}
+.qty-controls button svg{width:14px;height:14px}
+.qty-controls button:hover{background:var(--hover-bg);border-color:var(--sage)}
+.qty-controls span{min-width:20px;text-align:center;font-weight:600;font-size:.9rem}
+.remove-item{background:none;border:none;color:var(--danger);cursor:pointer;padding:8px;min-width:40px;min-height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:background .2s var(--ease);touch-action:manipulation}
+.remove-item svg{width:16px;height:16px}
+.remove-item:hover{background:rgba(239,68,68,.1)}
+.cart-empty{text-align:center;color:var(--text-muted);margin-top:48px;font-size:.9rem}
+.cart-empty svg{width:40px;height:40px;display:block;margin:0 auto 12px;opacity:.4}
+.cart-footer{padding:18px 20px calc(20px + var(--safe-bottom));border-top:1px solid var(--border);flex-shrink:0}
+.cart-total{display:flex;justify-content:space-between;font-weight:700;font-size:1.02rem;margin-bottom:14px;color:var(--text)}
+.checkout-btn{width:100%;background:var(--primary);color:var(--primary-contrast);border:none;padding:14px;border-radius:10px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);box-shadow:var(--shadow-xs);min-height:48px;font-size:.94rem;touch-action:manipulation;font-family:inherit}
+.checkout-btn:hover{background:var(--sage);color:#fff;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+[data-theme="dark"] .checkout-btn:hover{color:#2A2320}
+.overlay{position:fixed;inset:0;background:rgba(58,44,35,.45);backdrop-filter:blur(2px);z-index:1500;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.overlay.show{opacity:1;pointer-events:auto}
+[data-theme="dark"] .overlay{background:rgba(0,0,0,.7)}
+
+/* ============ CHECKOUT ============ */
+.checkout-modal{position:fixed;inset:0;background:rgba(58,44,35,.6);backdrop-filter:blur(6px);z-index:2500;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:clamp(16px,3vw,32px) clamp(10px,2vw,16px);-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+[data-theme="dark"] .checkout-modal{background:rgba(0,0,0,.8)}
+.checkout-modal.open{display:flex}
+.checkout-content{background:var(--card-bg);border-radius:var(--radius-lg);max-width:780px;width:100%;box-shadow:var(--shadow-lg);overflow:hidden;animation:modalIn .4s var(--ease);position:relative;color:var(--text);margin:auto}
+@keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.checkout-header{background:linear-gradient(135deg,#3A2C23 0%,#6B4F3F 100%);color:#fff;padding:clamp(18px,2.6vw,24px) clamp(18px,2.6vw,26px);display:flex;justify-content:space-between;align-items:center;position:relative;overflow:hidden;gap:12px}
+.checkout-header::after{content:'';position:absolute;top:-60%;right:-10%;width:240px;height:240px;background:rgba(143,169,123,.15);border-radius:50%}
+.checkout-header h3{font-size:clamp(1.05rem,2vw,1.22rem);position:relative;z-index:1;font-weight:700}
+.checkout-header button{background:rgba(255,255,255,.15);border:none;color:#fff;cursor:pointer;width:38px;height:38px;border-radius:50%;transition:background .25s var(--ease);position:relative;z-index:1;display:flex;align-items:center;justify-content:center;flex-shrink:0;touch-action:manipulation}
+.checkout-header button svg{width:16px;height:16px}
+.checkout-header button:hover{background:rgba(255,255,255,.28)}
+.checkout-steps{display:flex;justify-content:center;align-items:center;gap:6px;padding:16px;background:var(--soft-bg);border-bottom:1px solid var(--border);transition:background-color .35s ease;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text-muted);font-weight:500}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--card-bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.7rem;color:var(--text-muted);flex-shrink:0}
+.step.active .step-num{background:var(--sage);border-color:var(--sage);color:#fff;box-shadow:0 0 0 4px var(--sage-soft)}
+.step.active{color:var(--sage);font-weight:700}
+.step.done .step-num{background:var(--success);border-color:var(--success);color:#fff}
+.step-line{width:24px;height:2px;background:var(--border);border-radius:1px}
+.checkout-body{padding:clamp(18px,3vw,26px)}
+.checkout-section{margin-bottom:24px;padding-bottom:22px;border-bottom:1px dashed var(--border)}
+.checkout-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.checkout-section h4{color:var(--text);margin-bottom:14px;font-size:clamp(.92rem,1.4vw,1rem);display:flex;align-items:center;gap:8px;font-weight:600}
+.checkout-section h4 svg{width:17px;height:17px;color:var(--sage);flex-shrink:0}
+.shipping-form{display:grid;gap:12px}
+.shipping-form input,.shipping-form textarea{padding:13px 16px;border-radius:10px;border:1px solid var(--border);outline:none;font-family:inherit;font-size:1rem;transition:all .25s var(--ease);background:var(--input-bg);color:var(--text);min-height:48px;width:100%}
+.shipping-form input::placeholder,.shipping-form textarea::placeholder{color:var(--text-muted)}
+.shipping-form input:focus,.shipping-form textarea:focus{border-color:var(--sage);background:var(--card-bg);box-shadow:0 0 0 3px var(--sage-soft)}
+.shipping-form textarea{resize:none!important}
+.direct-qty{display:flex;align-items:center;justify-content:space-between;padding:0 0 12px;margin-bottom:8px;border-bottom:1px dashed var(--border);font-size:.9rem;color:var(--text)}
+.direct-qty div{display:flex;align-items:center}
+.direct-qty button{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--card-bg);color:var(--text);font-size:1.15rem;cursor:pointer;touch-action:manipulation}
+.direct-qty b{min-width:38px;text-align:center}
+.payment-methods{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:10px}
+.payment-option{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all .25s var(--ease);background:var(--card-bg);color:var(--text);position:relative;overflow:hidden;min-height:64px;touch-action:manipulation}
+.payment-option:hover{border-color:var(--sage);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.payment-option.selected{border-color:var(--sage);background:linear-gradient(135deg,var(--sage-soft),transparent);box-shadow:0 0 0 3px var(--sage-soft)}
+.payment-option input[type="radio"]{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid var(--border);border-radius:50%;position:relative;cursor:pointer;transition:all .25s var(--ease);flex-shrink:0;background:var(--card-bg)}
+.payment-option input[type="radio"]:checked{border-color:var(--sage);background:var(--sage)}
+.payment-option input[type="radio"]:checked::after{content:'';position:absolute;inset:4px;background:#fff;border-radius:50%}
+.payment-option .pay-icon{color:var(--sage);width:30px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.payment-option .pay-icon svg{width:22px;height:22px}
+.payment-option .pay-info{flex:1;min-width:0}
+.payment-option .pay-info h5{font-size:.86rem;color:var(--text);margin-bottom:2px;font-weight:600}
+.payment-option .pay-info p{font-size:.72rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.order-summary{background:var(--soft-bg);border-radius:var(--radius);padding:clamp(16px,2vw,20px);border:1px solid var(--border);transition:background-color .35s ease}
+.order-item{display:flex;justify-content:space-between;padding:7px 0;font-size:clamp(.82rem,1.3vw,.88rem);color:var(--text-muted);gap:12px}
+.order-item span:first-child{flex:1;word-break:break-word}
+.order-item span:last-child{white-space:nowrap;font-weight:500}
+.order-item.total{border-top:2px dashed var(--border);margin-top:10px;padding-top:14px;font-weight:700;font-size:clamp(.92rem,1.5vw,1.02rem);color:var(--text)}
+.checkout-actions{display:flex;gap:10px;padding:clamp(16px,2.6vw,20px) clamp(18px,3vw,26px) calc(clamp(18px,2.6vw,22px) + var(--safe-bottom));background:var(--soft-bg);border-top:1px solid var(--border);transition:background-color .35s ease}
+.btn-cancel,.btn-confirm{flex:1;padding:14px;border-radius:10px;border:none;font-weight:600;cursor:pointer;transition:all .3s var(--ease);font-size:.93rem;min-height:48px;touch-action:manipulation;font-family:inherit}
+.btn-cancel{background:var(--card-bg);color:var(--text);border:1px solid var(--border)}
+.btn-cancel:hover{background:var(--hover-bg);border-color:var(--sage)}
+.btn-confirm{background:linear-gradient(135deg,#6B4F3F,#8FA97B);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-confirm:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+
+/* ============ PAYMENT RESULT ============ */
+.payment-result{position:fixed;inset:0;background:rgba(58,44,35,.65);backdrop-filter:blur(6px);z-index:3000;display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+[data-theme="dark"] .payment-result{background:rgba(0,0,0,.85)}
+.payment-result.open{display:flex}
+.payment-result-content{background:var(--card-bg);border-radius:var(--radius-lg);max-width:540px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);animation:modalIn .4s var(--ease);max-height:calc(100dvh - 32px);display:flex;flex-direction:column;color:var(--text);margin:auto}
+.result-header{background:linear-gradient(135deg,#10b981 0%,#059669 100%);padding:clamp(24px,3.5vw,32px) clamp(18px,2.6vw,26px) clamp(20px,2.6vw,24px);text-align:center;color:#fff;position:relative;overflow:hidden;flex-shrink:0}
+.result-header::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.1);border-radius:50%}
+.result-header .success-icon{margin-bottom:10px;position:relative;z-index:1;display:inline-flex;animation:bounce 1.5s ease infinite}
+.result-header .success-icon svg{width:52px;height:52px}
+.result-header h3{color:#fff;margin-bottom:6px;font-size:clamp(1.1rem,2vw,1.3rem);position:relative;z-index:1;font-weight:700}
+.result-header p{color:rgba(255,255,255,.92);font-size:.84rem;position:relative;z-index:1;line-height:1.55}
+.result-body{padding:clamp(16px,2.6vw,22px);overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.payment-detail{background:var(--soft-bg);border-radius:var(--radius);padding:clamp(16px,2vw,20px);text-align:left;margin-bottom:16px;border:1px dashed var(--sage);transition:background-color .35s ease}
+.payment-detail h5{color:var(--text);margin-bottom:12px;font-size:.9rem;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.payment-detail h5 svg{width:16px;height:16px;color:var(--sage)}
+.payment-detail .row{display:flex;justify-content:space-between;padding:6px 0;font-size:.84rem;color:var(--text-muted);gap:12px}
+.payment-detail .row span:first-child{flex-shrink:0}
+.payment-detail .row strong{color:var(--text);word-break:break-word;text-align:right;font-weight:600}
+.rekening-box{background:var(--card-bg);border-radius:10px;padding:14px 16px;margin-top:12px;border-left:3px solid var(--sage);display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:var(--shadow-xs);transition:background-color .35s ease;flex-wrap:wrap}
+.rekening-box .num{font-family:'Courier New',monospace;font-weight:700;font-size:1rem;color:var(--text);letter-spacing:1px}
+.copy-btn{background:var(--sage);color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:.74rem;font-weight:600;cursor:pointer;transition:all .25s var(--ease);white-space:nowrap;min-height:40px;touch-action:manipulation;display:inline-flex;align-items:center;gap:5px;font-family:inherit}
+[data-theme="dark"] .copy-btn{color:#2A2320}
+.copy-btn svg{width:13px;height:13px}
+.copy-btn:hover{background:var(--sage-dark);transform:translateY(-1px)}
+.result-actions{padding:0 clamp(16px,2.6vw,22px) calc(clamp(16px,2.6vw,22px) + var(--safe-bottom));flex-shrink:0}
+.btn-wa-confirm{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;padding:14px;border-radius:10px;border:none;font-weight:600;cursor:pointer;margin-bottom:10px;transition:all .3s var(--ease);font-size:.9rem;box-shadow:var(--shadow-xs);min-height:48px;touch-action:manipulation;font-family:inherit}
+.btn-wa-confirm svg{width:16px;height:16px}
+.btn-wa-confirm:hover:not(:disabled){transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-wa-confirm:disabled{opacity:.85;cursor:wait}
+.btn-close-result{width:100%;background:var(--card-bg);color:var(--text);border:1px solid var(--border);padding:13px;border-radius:10px;font-weight:600;cursor:pointer;transition:all .3s var(--ease);min-height:48px;font-size:.9rem;touch-action:manipulation;font-family:inherit}
+.btn-close-result:hover{background:var(--hover-bg);border-color:var(--sage)}
+
+/* ============ FLOATING ============ */
+.wa-float,.cart-float{position:fixed;bottom:calc(20px + var(--safe-bottom));z-index:999;width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);padding:0;touch-action:manipulation}
+.wa-float svg{width:26px;height:26px}
+.cart-float svg{width:24px;height:24px}
+.wa-float{right:calc(20px + var(--safe-right));background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.35),0 2px 8px rgba(0,0,0,.12)}
+.cart-float{left:calc(20px + var(--safe-left));background:var(--card-bg);color:var(--text);border:1px solid var(--border);box-shadow:var(--shadow-md)}
+.wa-float:hover:not(:disabled),.cart-float:hover{transform:scale(1.08) translateY(-2px)}
+.cart-float:hover{background:var(--sage);color:#fff}
+.wa-float:disabled{cursor:wait}
+.wa-float .wa-dot{position:absolute;top:4px;right:4px;width:12px;height:12px;background:var(--danger);border-radius:50%;border:2px solid #fff;animation:pulse 1.5s ease infinite}
+.cart-float-badge{position:absolute;top:-4px;right:-4px;background:var(--sage);color:#fff;border-radius:20px;min-width:22px;height:22px;padding:0 6px;font-size:.72rem;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 0 0 2px var(--bg)}
+[data-theme="dark"] .cart-float-badge{color:#2A2320}
+.cart-float.bump{animation:cartBump .4s var(--ease)}
+@keyframes cartBump{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.15)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.spinner{display:inline-block;width:20px;height:20px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.spinner-sm{width:15px;height:15px;border-width:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.to-top{position:fixed;right:calc(24px + var(--safe-right));bottom:calc(92px + var(--safe-bottom));z-index:998;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card-bg);color:var(--text);box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s,transform .3s,visibility .3s;touch-action:manipulation;padding:0}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top svg{width:20px;height:20px}
+
+/* ============ TOAST ============ */
+.toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--primary);color:var(--primary-contrast);padding:14px 24px;border-radius:10px;font-size:.88rem;opacity:0;transition:all .4s var(--ease);z-index:4000;box-shadow:var(--shadow-md);max-width:calc(100vw - 32px);text-align:center;line-height:1.45;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* ============ ANIMASI ============ */
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatIn{from{opacity:0;transform:translateX(60px) scale(.95)}to{opacity:1;transform:translateX(0) scale(1)}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1024px){
+  .product-grid{grid-template-columns:repeat(3,1fr);gap:20px}
+  .review-layout{grid-template-columns:300px 1fr;gap:22px}
+  .hero{gap:36px}
+}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;gap:32px}
+  .hero-img{max-width:600px;margin:0 auto;width:100%}
+  .hero-text p{max-width:560px;margin-left:auto;margin-right:auto}
+  .about-grid{grid-template-columns:1fr;gap:28px}
+  .about-img{max-width:560px;margin:0 auto}
+  .review-summary{grid-template-columns:1fr;text-align:center;gap:24px}
+  .review-layout{grid-template-columns:1fr}
+  .review-form-card{position:static}
+  .rating-bars{max-width:420px;margin:0 auto;width:100%}
+  .nav-links{position:absolute;top:100%;left:0;right:0;background:var(--card-bg);flex-direction:column;padding:12px;gap:2px;box-shadow:var(--shadow-md);transform:translateY(-150%);opacity:0;pointer-events:none;border-bottom:1px solid var(--border);z-index:999}
+  .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto;max-height:calc(100dvh - 72px);overflow-y:auto;overscroll-behavior:contain}
+  .nav-links a{padding:12px 16px;border-radius:8px;display:block}
+  .nav-links a:hover{background:var(--hover-bg)}
+  .nav-links a::after{display:none}
+  .hamburger{display:flex}
+}
+@media (max-width:768px){
+  nav{padding:12px var(--container-pad);gap:10px}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .features{grid-template-columns:repeat(2,1fr);gap:16px}
+  .hampers-grid{grid-template-columns:1fr}
+  .testimonial-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .cart-modal{width:min(360px,100vw)}
+  input,select,textarea{font-size:16px!important}
+  .to-top{right:calc(22px + var(--safe-right))}
+}
+@media (max-width:640px){
+  :root{--container-pad:16px}
+  section{padding-top:44px;padding-bottom:44px}
+  nav{padding:12px 16px}
+  .theme-toggle,.hamburger{width:40px;height:40px}
+  .theme-toggle svg{width:18px;height:18px}
+  .cart-btn{padding:9px 12px;font-size:.85rem;min-height:40px}
+  .cart-btn span:not(.cart-count){display:none}
+  .cart-btn svg{margin:0}
+  .cart-btn{padding:9px 14px;min-width:44px}
+  .hero-text h1{font-size:1.55rem;line-height:1.2}
+  .hero-text p{font-size:.88rem;margin-bottom:16px}
+  .hero-img{max-height:260px;aspect-ratio:16/10!important}
+  .cta-btn{width:100%;max-width:320px;padding:13px 24px;font-size:.92rem;justify-content:center}
+  .categories{grid-template-columns:repeat(2,1fr);gap:12px}
+  .category-card{padding:20px 10px;min-height:100px;gap:8px}
+  .category-card .emoji svg{width:26px;height:26px}
+  .category-card h4{font-size:.8rem}
+  .filter-bar{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;padding-bottom:8px;margin-left:calc(-1 * var(--container-pad));margin-right:calc(-1 * var(--container-pad));padding-left:var(--container-pad);padding-right:var(--container-pad);-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity}
+  .filter-bar::-webkit-scrollbar{display:none}
+  .filter-btn{flex-shrink:0;scroll-snap-align:start;padding:9px 16px;font-size:.8rem;min-height:40px}
+  .product-grid{gap:10px}
+  .product-media{padding-top:78%!important}
+  .product-info{padding:10px 12px}
+  .product-info h4{font-size:.82rem!important;margin-bottom:4px}
+  .product-info .desc{display:none!important}
+  .badge{font-size:.58rem;padding:3px 7px;margin-bottom:6px}
+  .price{font-size:.84rem}
+  .price-row{gap:6px;margin-top:6px}
+  .btn-group{gap:5px}
+  .add-btn{width:32px;height:32px}
+  .add-btn svg{width:15px;height:15px}
+  .buy-btn{height:32px;font-size:.7rem;padding:0 10px;flex:1}
+  .how-steps{grid-template-columns:1fr}
+  .feature-card{padding:24px 18px}
+  .feature-card .icon svg{width:28px;height:28px}
+  .feature-card h4{font-size:.95rem}
+  .feature-card p{font-size:.82rem}
+  .testimonial{padding:22px}
+  .testimonial p{font-size:.88rem}
+  .review-summary{padding:22px 18px}
+  .rating-bars{max-width:280px}
+  .review-form-card{padding:20px}
+  .reviews-list{max-height:520px}
+  .review-card{padding:14px}
+  .review-avatar{width:36px;height:36px;font-size:.9rem}
+  .review-name{font-size:.88rem}
+  .review-comment{font-size:.82rem;margin-top:6px}
+  .review-stars{font-size:.8rem;letter-spacing:1px}
+  .hampers{padding:32px 18px}
+  .hampers-card{padding:22px}
+  .custom-form{margin-top:26px}
+  .custom-form input,.custom-form textarea,.custom-form select{padding:11px 13px;min-height:44px}
+  .faq-question{font-size:.87rem;padding:16px 18px;gap:10px}
+  .faq-left{gap:10px}
+  .faq-answer{font-size:.84rem;padding:0 18px}
+  .faq-item.open .faq-answer{padding:0 18px 16px}
+  .contact-card{padding:24px 18px}
+  .cart-modal{width:100vw;max-width:100vw}
+  .cart-header{padding:16px 18px}
+  .cart-item{padding:10px 0;gap:10px}
+  .cart-item img{width:48px;height:48px}
+  .cart-item-info h5{font-size:.82rem}
+  .qty-controls{margin-top:4px;gap:6px}
+  .qty-controls button{width:30px;height:30px;font-size:.9rem}
+  .checkout-modal{padding:12px 8px}
+  .checkout-content{border-radius:14px}
+  .checkout-body{padding:16px 14px}
+  .checkout-section{margin-bottom:18px;padding-bottom:16px}
+  .checkout-section h4{font-size:.88rem;margin-bottom:10px}
+  .checkout-actions{flex-direction:column;gap:8px;padding:14px 14px calc(14px + var(--safe-bottom))}
+  .btn-cancel,.btn-confirm{width:100%}
+  .payment-methods{grid-template-columns:1fr;gap:8px}
+  .payment-option{padding:12px 14px;min-height:58px}
+  .payment-option .pay-info p{display:block;font-size:.7rem}
+  .result-header{padding:24px 18px 20px}
+  .result-header .success-icon svg{width:42px;height:42px}
+  .result-body{padding:14px}
+  .result-actions{padding:0 14px calc(14px + var(--safe-bottom))}
+  .payment-detail{padding:14px}
+  .payment-detail .row{font-size:.8rem}
+  .rekening-box{flex-direction:column;align-items:stretch}
+  .rekening-box .num{font-size:.95rem}
+  .wa-float,.cart-float{width:54px;height:54px;bottom:calc(16px + var(--safe-bottom))}
+  .wa-float{right:calc(16px + var(--safe-right))}
+  .wa-float svg{width:24px;height:24px}
+  .cart-float{left:calc(16px + var(--safe-left))}
+  .cart-float svg{width:22px;height:22px}
+  .toast{bottom:84px;font-size:.83rem;padding:12px 18px}
+  .checkout-steps{padding:12px 8px;gap:4px}
+  .step{font-size:.7rem}
+  .step-num{width:22px;height:22px;font-size:.66rem}
+  .step-line{width:16px}
+  .order-item{padding:5px 0;font-size:.8rem}
+  .order-item.total{padding-top:10px;margin-top:8px;font-size:.88rem}
+}
+@media (max-width:400px){
+  :root{--container-pad:14px}
+  .logo{font-size:1.15rem}
+  .hero-text h1{font-size:1.5rem}
+  .section-title{font-size:1.35rem}
+  .product-grid{grid-template-columns:1fr;gap:12px}
+  .product-media{padding-top:68%!important}
+  .product-info{padding:12px}
+  .product-info h4{font-size:.92rem!important}
+  .product-info .desc{display:block!important;-webkit-line-clamp:2;display:-webkit-box!important;-webkit-box-orient:vertical;overflow:hidden;font-size:.76rem!important}
+  .add-btn{width:36px;height:36px}
+  .buy-btn{flex:1;height:36px;font-size:.78rem}
+  .categories{grid-template-columns:1fr 1fr;gap:8px}
+  .features{grid-template-columns:1fr}
+  .review-summary{padding:18px 14px}
+  .avg-num{font-size:2.4rem}
+  .step{font-size:.66rem}
+  .step-num{width:20px;height:20px;font-size:.6rem}
+  .step-line{width:12px}
+  .star-picker span{min-width:40px;min-height:40px;font-size:1.7rem}
+  .wa-float,.cart-float{width:50px;height:50px}
+  .wa-float svg{width:22px;height:22px}
+  .cart-float svg{width:20px;height:20px}
+}
+@supports (padding:max(0px)){body{padding-left:max(0px,env(safe-area-inset-left));padding-right:max(0px,env(safe-area-inset-right))}}
+:focus-visible{outline:2px solid var(--sage);outline-offset:2px}
+@media (hover:none) and (pointer:coarse){
+  .product-card:hover{transform:none;box-shadow:var(--shadow-depth)}
+  .product-card:hover .product-img{transform:none}
+  .category-card:hover,.feature-card:hover,.contact-card:hover,.hampers-card:hover,.testimonial:hover,.payment-option:hover,.cta-btn:hover,.ig-btn:hover{transform:none}
+  .product-media::before{display:none}
+}
+.no-fg nav>*+*{margin-left:12px}
+.no-fg .nav-actions>*+*{margin-left:8px}
+.no-fg .btn-group>*+*{margin-left:8px}
+.no-fg .price-row>*{margin:0 10px 10px 0}
+@media (prefers-reduced-motion:reduce){
+  .hero-img{animation:none}
+  .product-card:hover{transform:none}
+  .product-media::before{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="falling-layer hidden-at-home" id="fallingLayer" aria-hidden="true"></div>
+
+<header>
+  <nav>
+    <div class="logo" onclick="goTop()">Dessert<span>kchaww</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" onclick="closeMenu()">Home</a></li>
+      <li><a href="#menu" onclick="closeMenu()">Menu</a></li>
+      <li><a href="#about" onclick="closeMenu()">Tentang Kami</a></li>
+      <li><a href="#hampers" onclick="closeMenu()">Hampers</a></li>
+      <li><a href="#testimoni" onclick="closeMenu()">Testimoni</a></li>
+      <li><a href="#ulasan" onclick="closeMenu()">Ulasan</a></li>
+      <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="Ganti Tema" aria-label="Ganti Tema">
+        <span id="themeIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+      </button>
+      <button class="cart-btn" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        <span>Keranjang</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Manisnya <span>Dessert</span> Premium, Dibuat Fresh Setiap Hari</h1>
+    <p>Dessertkchaww menghadirkan cake, pastry, dan dessert box dengan bahan premium pilihan. Pesan sekarang dan rasakan kelembutan di setiap gigitan.</p>
+    <a href="#menu" class="cta-btn">Lihat Menu Hari Ini<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&q=75&auto=format&fit=crop"
+         srcset="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=480&q=75&auto=format&fit=crop 480w, https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&q=75&auto=format&fit=crop 800w"
+         sizes="(max-width:900px) 92vw, 560px" fetchpriority="high" decoding="async"
+         alt="Signature Strawberry Cream Cake Dessertkchaww" onerror="imgFail(this)">
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Kategori Dessert</h2>
+  <p class="section-sub">Pilih kategori favoritmu dan temukan manis yang pas</p>
+  <div class="categories">
+    <div class="category-card" onclick="filterCategory('Cakes')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7"/><path d="M2 21h20"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M8 12V9"/><path d="M12 12V9"/><path d="M16 12V9"/></svg></span><h4>Cakes</h4></div>
+    <div class="category-card" onclick="filterCategory('Pastries')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4.6 13.11 5.79-3.21c1.89-1.05 4.79 1.78 3.71 3.71l-3.22 5.81C8.8 23.16.79 15.23 4.6 13.11Z"/></svg></span><h4>Pastries</h4></div>
+    <div class="category-card" onclick="filterCategory('Dessert Box')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><h4>Dessert Boxes</h4></div>
+    <div class="category-card" onclick="filterCategory('Cookies')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></span><h4>Cookies</h4></div>
+    <div class="category-card" onclick="filterCategory('Vegan')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><h4>Vegan / GF</h4></div>
+  </div>
+</section>
+
+<section id="menu">
+  <h2 class="section-title">Menu &amp; Katalog Produk</h2>
+  <p class="section-sub">Klik "Beli" untuk checkout langsung, atau <b>+</b> untuk tambah ke keranjang</p>
+  <div class="how-steps">
+    <div class="how-step"><span class="how-num">1</span><div><b>Pilih dessert</b><small>Tekan + atau Beli</small></div></div>
+    <div class="how-step"><span class="how-num">2</span><div><b>Isi data &amp; bayar</b><small>Pilih metode pembayaran</small></div></div>
+    <div class="how-step"><span class="how-num">3</span><div><b>Konfirmasi WhatsApp</b><small>Pesanan langsung diproses</small></div></div>
+  </div>
+  <div class="search-box"><div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="search" id="searchInput" placeholder="Cari menu favorit Anda..." oninput="renderProducts()">
+  </div></div>
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="all" onclick="filterCategory('all', this)">Semua</button>
+    <button class="filter-btn" data-cat="Cakes" onclick="filterCategory('Cakes', this)">Cakes</button>
+    <button class="filter-btn" data-cat="Pastries" onclick="filterCategory('Pastries', this)">Pastries</button>
+    <button class="filter-btn" data-cat="Dessert Box" onclick="filterCategory('Dessert Box', this)">Dessert Box</button>
+    <button class="filter-btn" data-cat="Cookies" onclick="filterCategory('Cookies', this)">Cookies</button>
+    <button class="filter-btn" data-cat="Vegan" onclick="filterCategory('Vegan', this)">Vegan</button>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section>
+  <h2 class="section-title">Kenapa Pilih Dessertkchaww?</h2>
+  <p class="section-sub">Kualitas terbaik untuk momen manis Anda</p>
+  <div class="features">
+    <div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div><h4>Bahan Premium</h4><p>Menggunakan cokelat Belgia, mentega Prancis, dan buah segar pilihan.</p></div>
+    <div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg></div><h4>Freshly Baked</h4><p>Dibuat segar setiap hari, tanpa pengawet, langsung dari dapur kami.</p></div>
+    <div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div><h4>Pengiriman Suhu Terjaga</h4><p>Dikemas dengan ice pack agar dessert tetap sempurna saat tiba.</p></div>
+    <div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div><h4>Pembayaran Fleksibel</h4><p>Transfer bank, e-wallet, QRIS, hingga COD. Pilih yang paling mudah!</p></div>
+  </div>
+</section>
+
+<section id="testimoni">
+  <h2 class="section-title">Kata Pelanggan Kami</h2>
+  <p class="section-sub">Cerita manis dari mereka yang sudah mencoba</p>
+  <div class="testimonial-grid">
+    <div class="testimonial"><p>Molten cake-nya juara! Cokelatnya lumer banget dan nggak bikin enek. Pengiriman juga cepat.</p><div class="name">— Sarah, Jakarta</div><div class="stars">★★★★★</div></div>
+    <div class="testimonial"><p>Dessert box-nya cantik dan rasanya premium. Cocok banget buat hadiah ulang tahun teman.</p><div class="name">— Andini, Bandung</div><div class="stars">★★★★★</div></div>
+    <div class="testimonial"><p>Sebagai yang gluten-free, aku senang banget ada pilihan vegan &amp; gluten-free yang enak!</p><div class="name">— Maria, Surabaya</div><div class="stars">★★★★★</div></div>
+  </div>
+</section>
+
+<section id="ulasan">
+  <h2 class="section-title">Ulasan Pelanggan</h2>
+  <p class="section-sub">Bagikan pengalaman Anda — ulasan tampil publik di semua perangkat</p>
+  <div class="review-summary">
+    <div class="rating-big"><div class="avg-num" id="avgRating">5.0</div><div class="stars-big" id="avgStars">★★★★★</div><div class="total-reviews"><span id="totalReviews">0</span> ulasan pelanggan</div></div>
+    <div class="rating-bars" id="ratingBars"></div>
+  </div>
+  <div class="review-layout">
+    <div class="review-form-card">
+      <h3>Tulis Ulasan Anda</h3>
+      <form onsubmit="submitReview(event)" id="reviewForm">
+        <input type="text" id="revName" placeholder="Nama Anda *" required maxlength="50">
+        <input type="text" id="revCity" placeholder="Kota (opsional)" maxlength="30">
+        <select id="revProduct" required>
+          <option value="">— Pilih Produk —</option>
+          <option>Belgian Chocolate Molten Cake</option><option>Strawberry Shortcake</option>
+          <option>Butter Croissant</option><option>Pain au Chocolat</option>
+          <option>Dessert Box Tiramisu</option><option>Dessert Box Mango Sticky</option>
+          <option>Choco Chip Cookies</option><option>Matcha Almond Cookies</option>
+          <option>Vegan Chocolate Cake</option><option>Gluten-Free Banana Bread</option>
+          <option>Red Velvet Cake</option><option>Cinnamon Roll</option><option>Umum / Toko</option>
+        </select>
+        <div class="star-picker" id="starPicker">
+          <span onclick="setReviewRating(1)" data-star="1">☆</span><span onclick="setReviewRating(2)" data-star="2">☆</span>
+          <span onclick="setReviewRating(3)" data-star="3">☆</span><span onclick="setReviewRating(4)" data-star="4">☆</span>
+          <span onclick="setReviewRating(5)" data-star="5">☆</span>
+        </div>
+        <p class="rating-text" id="ratingText">Klik bintang untuk memberi rating</p>
+        <textarea id="revComment" placeholder="Ceritakan pengalaman Anda... *" required maxlength="500"></textarea>
+        <button type="submit" id="submitReviewBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>Kirim Ulasan</button>
+      </form>
+    </div>
+    <div class="reviews-col"><div class="reviews-list" id="reviewsList"></div></div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">Tentang Dessertkchaww</h2>
+  <p class="section-sub">Cerita di balik setiap gigitan manis</p>
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=700&auto=format&q=75"
+           srcset="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=480&auto=format&q=75 480w, https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=700&auto=format&q=75 700w"
+           sizes="(max-width:900px) 92vw, 560px" alt="Dapur Dessertkchaww" loading="lazy" decoding="async" onerror="imgFail(this)">
+    </div>
+    <div class="about-text">
+      <h3>Dari Dapur Kecil, Untuk Momen Bahagia Anda</h3>
+      <p>Dessertkchaww lahir dari kecintaan kami pada dunia pastry dan keinginan untuk menghadirkan dessert berkualitas restoran ke rumah Anda. Dimulai pada tahun 2020 dari dapur kecil, kini kami dipercaya ribuan pelanggan setia.</p>
+      <p>Kami percaya bahwa dessert bukan sekadar makanan penutup — ia adalah bagian dari kenangan. Karena itu, kami hanya menggunakan bahan-bahan terbaik: cokelat Belgia, mentega Prancis, dan buah segar setiap hari.</p>
+      <p><strong>Visi kami:</strong> Menjadi brand dessert rumahan paling dicintai di Indonesia.</p>
+    </div>
+  </div>
+</section>
+
+<section id="hampers">
+  <div class="hampers">
+    <h2 class="section-title">Hampers &amp; Custom Orders</h2>
+    <p class="section-sub">Hadiah manis untuk momen istimewa</p>
+    <div class="hampers-grid">
+      <div class="hampers-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7"/><path d="M2 21h20"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M8 12V9"/><path d="M12 12V9"/><path d="M16 12V9"/></svg></div><h4>Hampers Box</h4><p>Paket dessert cantik dengan pita &amp; kartu ucapan, siap dikirim ke orang tersayang.</p></div>
+      <div class="hampers-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/></svg></div><h4>Custom Cake</h4><p>Desain cake sesuai tema acara Anda: ulang tahun, wisuda, atau anniversary.</p></div>
+      <div class="hampers-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg></div><h4>Corporate Gift</h4><p>Pesan dalam jumlah besar untuk klien atau karyawan. Harga spesial &amp; custom logo.</p></div>
+    </div>
+    <form class="custom-form" onsubmit="submitCustomOrder(event)">
+      <input type="text" id="custName" placeholder="Nama Anda *" required maxlength="60">
+      <input type="tel" id="custPhone" placeholder="No. WhatsApp *" required maxlength="20" inputmode="tel" autocomplete="tel">
+      <select id="custType" required>
+        <option value="">— Jenis Pesanan —</option>
+        <option>Hampers Box</option><option>Custom Cake</option><option>Corporate Gift</option><option>Lainnya</option>
+      </select>
+      <textarea id="custMsg" placeholder="Detail pesanan (jumlah, tema, tanggal, dll.) *" required maxlength="500" rows="4"></textarea>
+      <button type="submit" id="custBtn">Kirim via WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="section-title">Pertanyaan Umum</h2>
+  <p class="section-sub">Beberapa hal yang sering ditanyakan pelanggan</p>
+  <div id="faqList">
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Berapa lama dessert tahan di kulkas?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Cake &amp; dessert box tahan 2-3 hari di kulkas. Pastry sebaiknya dikonsumsi hari yang sama atau hangatkan ulang di oven 150°C selama 3 menit.</div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Apakah bisa COD (bayar di tempat)?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Bisa! Pilih metode COD saat checkout. Berlaku untuk area Jabodetabek dengan minimal order Rp 100.000.</div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Pengiriman pakai apa? Aman nggak?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Kami menggunakan kurir instan (GoSend/GrabExpress) dengan kemasan ice pack. Untuk luar kota, kami kirim via ekspedisi berpendingin.</div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Bisa pesan untuk acara besar (bulk order)?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Sangat bisa! Hubungi kami via WhatsApp minimal H-3 acara. Kami sediakan harga khusus untuk pemesanan &gt; 20 pcs.</div></div>
+  </div>
+</section>
+
+<section id="kontak">
+  <h2 class="section-title">Hubungi Kami</h2>
+  <p class="section-sub">Kami siap membantu Anda — balas cepat via WhatsApp</p>
+  <div class="contact-grid">
+    <div class="contact-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><h4>Lokasi</h4><p>Jl. Manis No. 12<br>Jakarta Selatan<br>Buka 09.00 – 20.00</p></div>
+    <div class="contact-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div><h4>WhatsApp</h4><p>Pesan cepat, respon jam kerja<br>+62 812-3456-7890</p><a class="wa-btn" href="https://wa.me/6281234567890?text=Halo%20Dessertkchaww" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.3-.1-.5-.15-.7.15-.2.3-.8.95-1 1.15-.2.2-.35.2-.65.05-.3-.15-1.3-.5-2.5-1.55-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.05-.15-.65-1.55-.9-2.15-.25-.55-.5-.5-.7-.5h-.6c-.2 0-.5.05-.8.4-.3.35-1.05 1-1.05 2.45s1.05 2.85 1.2 3.05c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.6.7.25 1.35.2 1.85.15.55-.1 1.7-.7 1.95-1.4.25-.7.25-1.3.15-1.4-.05-.15-.25-.2-.55-.35Z"/></svg>Chat WhatsApp</a></div>
+    <div class="contact-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div><h4>Instagram</h4><p>Lihat update menu &amp; promo<br>@dessertkchaww</p><a class="ig-btn" href="https://instagram.com/dessertkchaww" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Follow IG</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Dessert<span>kchaww</span></div>
+  <p>© <span id="year"></span> Dessertkchaww — Manis di setiap gigitan. Dibuat dengan ❤️ di Indonesia.</p>
+</footer>
+
+<!-- CART -->
+<div class="cart-modal" id="cartModal" role="dialog" aria-modal="true">
+  <div class="cart-header"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>Keranjang</h3><button onclick="toggleCart()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">Rp 0</span></div>
+    <button class="checkout-btn" onclick="openCheckout()">Lanjut ke Checkout</button>
+  </div>
+</div>
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<!-- CHECKOUT -->
+<div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true">
+  <div class="checkout-content">
+    <div class="checkout-header"><h3>Checkout Pesanan</h3><button onclick="closeCheckout()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+    <div class="checkout-steps">
+      <div class="step active" id="step1"><span class="step-num">1</span>Data</div>
+      <div class="step-line"></div>
+      <div class="step" id="step2"><span class="step-num">2</span>Pembayaran</div>
+      <div class="step-line"></div>
+      <div class="step" id="step3"><span class="step-num">3</span>Selesai</div>
+    </div>
+    <div class="checkout-body">
+      <div class="checkout-section">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Data Pengiriman</h4>
+        <div class="shipping-form">
+          <input type="text" id="coName" placeholder="Nama Penerima *" required maxlength="60" autocomplete="name">
+          <input type="tel" id="coPhone" placeholder="No. WhatsApp *" required maxlength="20" inputmode="tel" autocomplete="tel">
+          <textarea id="coAddress" placeholder="Alamat Lengkap *" required maxlength="300" rows="3" autocomplete="street-address"></textarea>
+          <textarea id="coNote" placeholder="Catatan (opsional)" maxlength="200" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="checkout-section">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>Metode Pembayaran</h4>
+        <div class="payment-methods" id="paymentMethods">
+          <label class="payment-option selected"><input type="radio" name="pay" value="Transfer BCA" checked><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span><div class="pay-info"><h5>Transfer BCA</h5><p>Verifikasi manual</p></div></label>
+          <label class="payment-option"><input type="radio" name="pay" value="Transfer Mandiri"><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span><div class="pay-info"><h5>Transfer Mandiri</h5><p>Verifikasi manual</p></div></label>
+          <label class="payment-option"><input type="radio" name="pay" value="QRIS"><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/></svg></span><div class="pay-info"><h5>QRIS</h5><p>Semua e-wallet</p></div></label>
+          <label class="payment-option"><input type="radio" name="pay" value="COD"><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span><div class="pay-info"><h5>COD</h5><p>Bayar di tempat (Jabodetabek)</p></div></label>
+        </div>
+      </div>
+      <div class="checkout-section">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Ringkasan Pesanan</h4>
+        <div class="order-summary" id="orderSummary"></div>
+      </div>
+    </div>
+    <div class="checkout-actions">
+      <button class="btn-cancel" onclick="closeCheckout()">Batal</button>
+      <button class="btn-confirm" id="confirmBtn" onclick="confirmOrder()">Konfirmasi Pesanan</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT RESULT -->
+<div class="payment-result" id="paymentResult" role="dialog" aria-modal="true">
+  <div class="payment-result-content">
+    <div class="result-header">
+      <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <h3>Pesanan Berhasil Dibuat!</h3>
+      <p>Silakan konfirmasi via WhatsApp agar pesanan segera diproses.</p>
+    </div>
+    <div class="result-body" id="resultBody"></div>
+    <div class="result-actions">
+      <button class="btn-wa-confirm" id="waConfirmBtn" onclick="confirmViaWA()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.3-.1-.5-.15-.7.15-.2.3-.8.95-1 1.15-.2.2-.35.2-.65.05-.3-.15-1.3-.5-2.5-1.55-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.05-.15-.65-1.55-.9-2.15-.25-.55-.5-.5-.7-.5h-.6c-.2 0-.5.05-.8.4-.3.35-1.05 1-1.05 2.45s1.05 2.85 1.2 3.05c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.6.7.25 1.35.2 1.85.15.55-.1 1.7-.7 1.95-1.4.25-.7.25-1.3.15-1.4-.05-.15-.25-.2-.55-.35Z"/></svg>Konfirmasi via WhatsApp</button>
+      <button class="btn-close-result" onclick="closeResult()">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING -->
+<button class="wa-float" onclick="floatWA()" title="Chat WhatsApp" aria-label="Chat WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.3-.1-.5-.15-.7.15-.2.3-.8.95-1 1.15-.2.2-.35.2-.65.05-.3-.15-1.3-.5-2.5-1.55-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.05-.15-.65-1.55-.9-2.15-.25-.55-.5-.5-.7-.5h-.6c-.2 0-.5.05-.8.4-.3.35-1.05 1-1.05 2.45s1.05 2.85 1.2 3.05c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.6.7.25 1.35.2 1.85.15.55-.1 1.7-.7 1.95-1.4.25-.7.25-1.3.15-1.4-.05-.15-.25-.2-.55-.35Z"/></svg>
+  <span class="wa-dot"></span>
+</button>
+<button class="cart-float" onclick="toggleCart()" title="Keranjang" aria-label="Keranjang">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+  <span class="cart-float-badge" id="cartFloatBadge">0</span>
+</button>
+<button class="to-top" id="toTop" onclick="goTop()" aria-label="Ke atas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg></button>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   KONFIGURASI & UTIL
+   ============================================================ */
+const WA_NUMBER='6281234567890';
+const SUPABASE_URL='';        // isi jika pakai Supabase
+const SUPABASE_KEY='';        // isi jika pakai Supabase
+
+const $=id=>document.getElementById(id);
+const rupiah=n=>'Rp '+Number(n).toLocaleString('id-ID');
+let db=null;
+if(SUPABASE_URL&&SUPABASE_KEY&&window.supabase){
+  try{db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);}catch(e){}
+}
+
+/* ============================================================
+   DATA PRODUK
+   ============================================================ */
+const PRODUCTS=[
+  {id:1,n:'Belgian Chocolate Molten Cake',c:'Cakes',p:65000,d:'Cake cokelat Belgia dengan lava lumer di tengah.',b:'ready',img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&q=75&auto=format&fit=crop'},
+  {id:2,n:'Strawberry Shortcake',c:'Cakes',p:185000,d:'Sponge cake lembut, krim vanila, dan stroberi segar.',b:'ready',img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=75&auto=format&fit=crop'},
+  {id:3,n:'Red Velvet Cake',c:'Cakes',p:165000,d:'Red velvet klasik dengan cream cheese frosting.',b:'ready',img:'https://images.unsplash.com/photo-1586985289906-406988974504?w=500&q=75&auto=format&fit=crop'},
+  {id:4,n:'Butter Croissant',c:'Pastries',p:28000,d:'Croissant butter Prancis, renyah di luar lembut di dalam.',b:'ready',img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&q=75&auto=format&fit=crop'},
+  {id:5,n:'Pain au Chocolat',c:'Pastries',p:32000,d:'Pastry berlapis dengan isian cokelat Belgia.',b:'ready',img:'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=500&q=75&auto=format&fit=crop'},
+  {id:6,n:'Cinnamon Roll',c:'Pastries',p:35000,d:'Roll kayu manis dengan glaze cream cheese.',b:'ready',img:'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&q=75&auto=format&fit=crop'},
+  {id:7,n:'Dessert Box Tiramisu',c:'Dessert Box',p:75000,d:'Tiramisu lembut dengan kopi & mascarpone premium.',b:'ready',img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&q=75&auto=format&fit=crop'},
+  {id:8,n:'Dessert Box Mango Sticky',c:'Dessert Box',p:68000,d:'Mangga harum manis dengan sticky rice & saus kelapa.',b:'po',img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=75&auto=format&fit=crop'},
+  {id:9,n:'Choco Chip Cookies',c:'Cookies',p:45000,d:'Cookies renyah dengan choco chip melimpah.',b:'ready',img:'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500&q=75&auto=format&fit=crop'},
+  {id:10,n:'Matcha Almond Cookies',c:'Cookies',p:48000,d:'Cookies matcha premium dengan almond slice.',b:'ready',img:'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&q=75&auto=format&fit=crop'},
+  {id:11,n:'Vegan Chocolate Cake',c:'Vegan',p:175000,d:'Cake cokelat plant-based, tanpa telur & susu.',b:'vegan',img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=75&auto=format&fit=crop'},
+  {id:12,n:'Gluten-Free Banana Bread',c:'Vegan',p:85000,d:'Banana bread gluten-free, manis alami dari pisang.',b:'vegan',img:'https://images.unsplash.com/photo-1606101273945-e9eba91c0dc4?w=500&q=75&auto=format&fit=crop'}
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let cart=[];try{cart=JSON.parse(localStorage.getItem('dsk_cart'))||[];}catch(e){cart=[];}
+let currentCat='all';
+let reviewRating=0;
+let directProduct=null;
+let pendingOrder=null;
+
+/* ============================================================
+   RENDER PRODUK
+   ============================================================ */
+function renderProducts(){
+  const grid=$('productGrid');if(!grid)return;
+  const q=($('searchInput')?.value||'').toLowerCase().trim();
+  const list=PRODUCTS.filter(p=>{
+    const okCat=currentCat==='all'||p.c===currentCat;
+    const okQ=!q||p.n.toLowerCase().includes(q)||p.d.toLowerCase().includes(q);
+    return okCat&&okQ;
+  });
+  if(!list.length){grid.innerHTML='<div class="empty-reviews" style="grid-column:1/-1">Tidak ada produk yang cocok.</div>';return;}
+  const badgeMap={ready:['✓','ready'],po:['⏳','po'],vegan:['🌿','vegan']};
+  grid.innerHTML=list.map(p=>{
+    const [ico,cls]=badgeMap[p.b]||badgeMap.ready;
+    const label=p.b==='ready'?'Ready':(p.b==='po'?'Pre-Order':'Vegan');
+    return `<div class="product-card" data-id="${p.id}">
+      <div class="product-media"><span class="media-cat">${p.c}</span>
+        <img class="product-img" src="${p.img}" alt="${p.n}" loading="lazy" decoding="async" onerror="imgFail(this)">
+      </div>
+      <div class="product-info">
+        <span class="badge ${cls}">${ico} ${label}</span>
+        <h4>${p.n}</h4><p class="desc">${p.d}</p>
+        <div class="price-row"><span class="price">${rupiah(p.p)}</span>
+          <div class="btn-group">
+            <button class="add-btn" onclick="addToCart(${p.id})" title="Tambah ke keranjang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+            <button class="buy-btn" onclick="buyNow(${p.id})">Beli</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  requestAnimationFrame(()=>grid.querySelectorAll('.product-card').forEach((el,i)=>setTimeout(()=>el.classList.add('show'),i*40)));
+}
+
+function filterCategory(cat,btn){
+  currentCat=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
+  renderProducts();
+  if(!btn)document.getElementById('menu')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ============================================================
+   CART
+   ============================================================ */
+function saveCart(){try{localStorage.setItem('dsk_cart',JSON.stringify(cart));}catch(e){}}
+function findProduct(id){return PRODUCTS.find(p=>p.id===id);}
+function addToCart(id,silent){
+  const p=findProduct(id);if(!p)return;
+  const it=cart.find(x=>x.id===id);
+  if(it)it.qty++;else cart.push({id,qty:1});
+  saveCart();updateCartUI();
+  if(!silent)toast(`${p.n} ditambahkan ke keranjang`);
+}
+function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();updateCartUI();}
+function changeQty(id,delta){
+  const it=cart.find(x=>x.id===id);if(!it)return;
+  it.qty+=delta;if(it.qty<1)removeFromCart(id);else{saveCart();updateCartUI();}
+}
+function updateCartUI(){
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  $('cartCount').textContent=count;
+  const badge=$('cartFloatBadge');if(badge)badge.textContent=count;
+  const cartEl=$('cartItems');
+  if(!cartEl)return;
+  if(!cart.length){cartEl.innerHTML='<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>Keranjang masih kosong</div>';$('cartTotal').textContent=rupiah(0);return;}
+  cartEl.innerHTML=cart.map(it=>{
+    const p=findProduct(it.id);if(!p)return '';
+    return `<div class="cart-item">
+      <img src="${p.img}" alt="${p.n}" loading="lazy">
+      <div class="cart-item-info"><h5>${p.n}</h5><span class="price">${rupiah(p.p)}</span>
+        <div class="qty-controls">
+          <button onclick="changeQty(${p.id},-1)" aria-label="Kurangi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>
+          <span>${it.qty}</span>
+          <button onclick="changeQty(${p.id},1)" aria-label="Tambah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+        </div>
+      </div>
+      <button class="remove-item" onclick="removeFromCart(${p.id})" aria-label="Hapus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg></button>
+    </div>`;
+  }).join('');
+  const total=cart.reduce((s,i)=>{const p=findProduct(i.id);return s+(p?p.p*i.qty:0);},0);
+  $('cartTotal').textContent=rupiah(total);
+}
+function toggleCart(){
+  const m=$('cartModal'),o=$('overlay');
+  const open=!m.classList.contains('open');
+  m.classList.toggle('open',open);o.classList.toggle('show',open);
+}
+function buyNow(id){directProduct={id,qty:1};addToCart(id,true);openCheckout();}
+
+/* ============================================================
+   CHECKOUT
+   ============================================================ */
+function openCheckout(){
+  if(!cart.length&&!directProduct){toast('Keranjang masih kosong');return;}
+  $('cartModal').classList.remove('open');$('overlay').classList.remove('show');
+  renderOrderSummary();$('checkoutModal').classList.add('open');
+  setStep(1);
+  setTimeout(()=>$('coName')?.focus(),300);
+}
+function closeCheckout(){$('checkoutModal').classList.remove('open');directProduct=null;}
+function setStep(n){
+  ['step1','step2','step3'].forEach((id,i)=>{
+    const el=$(id);if(!el)return;
+    el.classList.remove('active','done');
+    if(i+1<n)el.classList.add('done');
+    if(i+1===n)el.classList.add('active');
+  });
+}
+function renderOrderSummary(){
+  const box=$('orderSummary');if(!box)return;
+  let items=cart.map(i=>{const p=findProduct(i.id);return p?{p,qty:i.qty}:null;}).filter(Boolean);
+  let dqHTML='';
+  if(directProduct){
+    const p=findProduct(directProduct.id);
+    if(p){
+      if(!items.find(i=>i.p.id===p.id))items.push({p,qty:directProduct.qty});
+      dqHTML=`<div class="direct-qty"><span>Beli langsung: <b>${p.n}</b></span><div><button onclick="changeDirect(-1)">−</button><b>${directProduct.qty}</b><button onclick="changeDirect(1)">+</button></div></div>`;
+    }
+  }
+  const total=items.reduce((s,i)=>s+i.p.p*i.qty,0);
+  box.innerHTML=dqHTML+items.map(i=>`<div class="order-item"><span>${i.p.n} × ${i.qty}</span><span>${rupiah(i.p.p*i.qty)}</span></div>`).join('')+`<div class="order-item total"><span>Total</span><span>${rupiah(total)}</span></div>`;
+}
+function changeDirect(d){
+  if(!directProduct)return;
+  directProduct.qty=Math.max(1,directProduct.qty+d);
+  const it=cart.find(x=>x.id===directProduct.id);
+  if(it)it.qty=directProduct.qty;
+  saveCart();updateCartUI();renderOrderSummary();
+}
+document.addEventListener('change',e=>{
+  if(e.target.name==='pay'){
+    document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected'));
+    e.target.closest('.payment-option')?.classList.add('selected');
+  }
+});
+function confirmOrder(){
+  const name=$('coName').value.trim(),phone=$('coPhone').value.trim(),addr=$('coAddress').value.trim();
+  const pay=document.querySelector('input[name="pay"]:checked')?.value||'Transfer BCA';
+  if(!name||!phone||!addr){toast('Lengkapi data pengiriman dulu');return;}
+  let items=cart.map(i=>{const p=findProduct(i.id);return p?{p,qty:i.qty}:null;}).filter(Boolean);
+  if(directProduct){
+    const p=findProduct(directProduct.id);
+    if(p&&!items.find(i=>i.p.id===p.id))items.push({p,qty:directProduct.qty});
+  }
+  if(!items.length){toast('Tidak ada item');return;}
+  const total=items.reduce((s,i)=>s+i.p.p*i.qty,0);
+  const orderId='DSK-'+Date.now().toString(36).toUpperCase().slice(-8);
+  pendingOrder={orderId,name,phone,addr,pay,items,total,note:$('coNote')?.value||''};
+  setStep(2);
+  setTimeout(()=>{showResult();},400);
+}
+function showResult(){
+  const o=pendingOrder;if(!o)return;
+  setStep(3);
+  const rek={BCA:'1234567890',Mandiri:'0987654321',QRIS:'Scan QR di WhatsApp',COD:'—'}[o.pay.split(' ').pop()]||'—';
+  const body=$('resultBody');
+  body.innerHTML=`
+    <div class="payment-detail">
+      <h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>Detail Pesanan</h5>
+      <div class="row"><span>Order ID</span><strong>${o.orderId}</strong></div>
+      <div class="row"><span>Nama</span><strong>${o.name}</strong></div>
+      <div class="row"><span>No. WA</span><strong>${o.phone}</strong></div>
+      <div class="row"><span>Alamat</span><strong>${o.addr}</strong></div>
+      <div class="row"><span>Metode</span><strong>${o.pay}</strong></div>
+      <div class="row"><span>Total</span><strong>${rupiah(o.total)}</strong></div>
+    </div>
+    ${o.pay.includes('Transfer')?`<div class="payment-detail"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>Rekening Tujuan</h5><div class="rekening-box"><div><div style="font-size:.74rem;color:var(--text-muted)">${o.pay}</div><div class="num">${rek}</div></div><button class="copy-btn" onclick="copyText('${rek}',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>Salin</button></div></div>`:''}
+  `;
+  $('paymentResult').classList.add('open');
+}
+function copyText(t,btn){
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>{toast('Nomor rekening disalin');if(btn)btn.textContent='✓ Disalin';});}
+  else{toast('Salin manual: '+t);}
+}
+function confirmViaWA(){
+  const o=pendingOrder;if(!o)return;
+  const lines=[`Halo Dessertkchaww, saya mau konfirmasi pesanan.`,`Order ID: ${o.orderId}`,`Nama: ${o.name}`,`No. WA: ${o.phone}`,`Alamat: ${o.addr}`,`Metode: ${o.pay}`,``,'Detail:',...o.items.map(i=>`- ${i.p.n} × ${i.qty} = ${rupiah(i.p.p*i.qty)}`),``,`Total: ${rupiah(o.total)}`,o.note?`Catatan: ${o.note}`:''].filter(Boolean).join('\n');
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines)}`,'_blank','noopener');
+}
+function closeResult(){
+  $('paymentResult').classList.remove('open');
+  cart=[];saveCart();updateCartUI();directProduct=null;
+  $('coName').value='';$('coPhone').value='';$('coAddress').value='';$('coNote')&&($('coNote').value='');
+  try{['coName','coPhone','coAddress'].forEach(k=>localStorage.removeItem('dsk_'+k));}catch(e){}
+  closeCheckout();
+}
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+function setReviewRating(n){
+  reviewRating=n;
+  document.querySelectorAll('#starPicker span').forEach((el,i)=>{el.classList.toggle('active',i<n);el.textContent=i<n?'★':'☆';});
+  const txt=['','Buruk','Kurang','Cukup','Bagus','Sangat Bagus'];
+  $('ratingText').textContent=txt[n]||'Klik bintang untuk memberi rating';
+}
+async function submitReview(e){
+  e.preventDefault();
+  const name=$('revName').value.trim(),city=$('revCity').value.trim(),prod=$('revProduct').value,comment=$('revComment').value.trim();
+  if(!name||!prod||!comment){toast('Lengkapi form ulasan');return;}
+  if(!reviewRating){toast('Klik bintang untuk memberi rating');return;}
+  const btn=$('submitReviewBtn');btn.disabled=true;btn.innerHTML='<span class="spinner spinner-sm"></span> Mengirim...';
+  const r={name,city,product:prod,rating:reviewRating,comment,created_at:new Date().toISOString()};
+  try{
+    if(db){
+      const {error}=await db.from('reviews').insert([r]);
+      if(error)throw error;
+    }else{
+      const arr=JSON.parse(localStorage.getItem('dsk_reviews')||'[]');arr.unshift(r);localStorage.setItem('dsk_reviews',JSON.stringify(arr));
+    }
+    toast('Terima kasih atas ulasan Anda!');
+    $('reviewForm').reset();setReviewRating(0);
+    await loadReviews();
+  }catch(err){console.warn(err);toast('Gagal kirim ulasan, coba lagi');}
+  btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/></svg>Kirim Ulasan';
+}
+async function loadReviews(){
+  let list=[];
+  try{
+    if(db){const {data,error}=await db.from('reviews').select('*').order('created_at',{ascending:false}).limit(50);if(error)throw error;list=data||[];}
+    else{list=JSON.parse(localStorage.getItem('dsk_reviews')||'[]');}
+  }catch(e){list=JSON.parse(localStorage.getItem('dsk_reviews')||'[]');}
+  renderReviews(list);
+}
+function renderReviews(list){
+  const wrap=$('reviewsList');if(!wrap)return;
+  const total=list.length;
+  const avg=total?list.reduce((s,r)=>s+r.rating,0)/total:5;
+  $('avgRating').textContent=avg.toFixed(1);
+  $('avgStars').textContent='★'.repeat(Math.round(avg))+'☆'.repeat(5-Math.round(avg));
+  $('totalReviews').textContent=total;
+  const dist=[5,4,3,2,1].map(s=>({s,n:list.filter(r=>r.rating===s).length}));
+  $('ratingBars').innerHTML=dist.map(d=>`<div class="rating-bar"><span class="label">${d.s}★</span><div class="bar"><div class="bar-fill" style="width:${total?(d.n/total*100):0}%"></div></div><span class="count">${d.n}</span></div>`).join('');
+  if(!total){wrap.innerHTML='<div class="empty-reviews">Belum ada ulasan. Jadilah yang pertama!</div>';return;}
+  wrap.innerHTML=list.slice(0,20).map(r=>{
+    const d=new Date(r.created_at||Date.now());
+    const date=d.toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'});
+    return `<div class="review-card">
+      <div class="review-card-header"><div class="name-info">
+        <div class="review-avatar">${(r.name||'?')[0].toUpperCase()}</div>
+        <div><div class="review-name">${esc(r.name)}</div><div class="review-meta">${r.city?esc(r.city)+' · ':''}${date}</div></div>
+      </div><div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div></div>
+      ${r.product?`<div class="review-product-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7"/></svg>${esc(r.product)}</div>`:''}
+      <p class="review-comment">${esc(r.comment)}</p>
+    </div>`;
+  }).join('');
+}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+/* ============================================================
+   UTIL UI
+   ============================================================ */
+function toast(msg){
+  const t=$('toast');if(!t)return;
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2400);
+}
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',cur);
+  try{localStorage.setItem('dessertkchaww_theme',cur);}catch(e){}
+  const ico=$('themeIcon');
+  ico.innerHTML=cur==='dark'
+    ?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>'
+    :'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+}
+function toggleMenu(){$('navLinks').classList.toggle('open');}
+function closeMenu(){$('navLinks').classList.remove('open');}
+function goTop(){window.scrollTo({top:0,behavior:'smooth'});}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+function floatWA(){window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Halo Dessertkchaww, saya ingin bertanya.')}`,'_blank','noopener');}
+function submitCustomOrder(e){
+  e.preventDefault();
+  const name=$('custName').value.trim(),phone=$('custPhone').value.trim(),type=$('custType').value,msg=$('custMsg').value.trim();
+  const txt=`Halo Dessertkchaww,\n\nNama: ${name}\nNo. WA: ${phone}\nJenis: ${type}\n\nDetail:\n${msg}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(txt)}`,'_blank','noopener');
+  e.target.reset();toast('Membuka WhatsApp...');
+}
+
+/* ============================================================
+   FALLING DECOR
+   ============================================================ */
+function initFalling(){
+  const layer=$('fallingLayer');if(!layer)return;
+  const svg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7"/><path d="M2 21h20"/><path d="M8 12V9M12 12V9M16 12V9"/></svg>';
+  let html='';
+  for(let i=0;i<14;i++){
+    const size=18+Math.random()*22;
+    html+=`<div class="falling-item" style="left:${Math.random()*100}%;width:${size}px;height:${size}px;animation-duration:${10+Math.random()*12}s;animation-delay:-${Math.random()*20}s">${svg}</div>`;
+  }
+  layer.innerHTML=html;
+}
+
+/* ============================================================
+   SCROLL SPY & REVEAL & TO-TOP
+   ============================================================ */
+function initScrollSpy(){
+  const links=document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections=[];
+  links.forEach(a=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)sections.push({el,a});});
+  if(!sections.length)return;
+  const update=()=>{
+    const y=window.scrollY+120;
+    let cur=sections[0];
+    sections.forEach(s=>{if(s.el.offsetTop<=y)cur=s;});
+    links.forEach(a=>a.classList.remove('active'));
+    cur.a.classList.add('active');
+  };
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+}
+function initReveal(){
+  const items=document.querySelectorAll('.section-title,.section-sub,.product-card,.category-card,.feature-card,.testimonial,.hampers-card,.contact-card,.about-text,.about-img,.how-step');
+  if(!('IntersectionObserver'in window)){items.forEach(el=>el.classList.add('show'));return;}
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});
+  },{threshold:0.12});
+  items.forEach(el=>{if(!el.classList.contains('show'))io.observe(el);});
+}
+function initToTop(){
+  const btn=$('toTop');if(!btn)return;
+  window.addEventListener('scroll',()=>{btn.classList.toggle('show',window.scrollY>600);},{passive:true});
+}
+function initAutosave(){
+  ['coName','coPhone','coAddress'].forEach(id=>{
+    const el=$(id);if(!el)return;
+    try{const v=localStorage.getItem('dsk_'+id);if(v&&!el.value)el.value=v;}catch(e){}
+    el.addEventListener('input',()=>{try{localStorage.setItem('dsk_'+id,el.value);}catch(e){}});
+  });
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded',()=>{
+  const y=$('year');if(y)y.textContent=new Date().getFullYear();
+  const cur=document.documentElement.getAttribute('data-theme');
+  if(cur==='dark'&&$('themeIcon'))$('themeIcon').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
+  renderProducts();updateCartUI();loadReviews();
+  initFalling();initScrollSpy();initReveal();initToTop();initAutosave();
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',closeMenu));
+});
+</script>
+</body>
+</html>
