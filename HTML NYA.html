@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+var de=document.documentElement,c=de.className||'';c+=' js';
+try{
+var f=document.createElement('div');
+f.style.cssText='display:flex;flex-direction:column;row-gap:1px;position:absolute';
+f.appendChild(document.createElement('div'));f.appendChild(document.createElement('div'));
+de.appendChild(f);var ok=f.scrollHeight===1;de.removeChild(f);
+if(!ok)c+=' no-fg';
+}catch(e){}
+try{
+var n=navigator,cn=n.connection||{};
+if((n.deviceMemory&&n.deviceMemory<=2)||(n.hardwareConcurrency&&n.hardwareConcurrency<=2)||cn.saveData||/(^|-)2g$/.test(cn.effectiveType||'')||!('IntersectionObserver' in window))c+=' lite';
+}catch(e){}
+de.className=c;
+var PH="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23F5EDE6'/%3E%3Cpath d='M110 230h180v70a10 10 0 0 1-10 10H120a10 10 0 0 1-10-10z' fill='%23D7BFAE'/%3E%3Ccircle cx='200' cy='150' r='9' fill='%23E8A87C'/%3E%3C/svg%3E";
+window.imgFail=function(i){i.onerror=null;i.removeAttribute('srcset');i.removeAttribute('sizes');i.src=PH;};
+})();
+try{var t=localStorage.getItem('dessertkchaww_theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFDF9">
+<meta name="description" content="Dessertkchaww — cake, pastry, dessert box premium dibuat fresh setiap hari. Pesan mudah via WhatsApp.">
+<title>Dessertkchaww — Manis di Setiap Gigitan</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%238FA97B'/%3E%3Cpath d='M20 45 Q50 15 80 45 L80 80 Q50 90 20 80 Z' fill='%23FFFDF9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="falling-layer hidden-at-home" id="fallingLayer" aria-hidden="true"></div>
+
+<header>
+<nav>
+<div class="logo" onclick="goTop()">Dessert<span>kchaww</span></div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home" data-sec="home" onclick="closeMenu()">Home</a></li>
+<li><a href="#menu" data-sec="menu" onclick="closeMenu()">Menu</a></li>
+<li><a href="#about" data-sec="about" onclick="closeMenu()">Tentang Kami</a></li>
+<li><a href="#hampers" data-sec="hampers" onclick="closeMenu()">Hampers</a></li>
+<li><a href="#testimoni" data-sec="testimoni" onclick="closeMenu()">Testimoni</a></li>
+<li><a href="#ulasan" data-sec="ulasan" onclick="closeMenu()">Ulasan</a></li>
+<li><a href="#faq" data-sec="faq" onclick="closeMenu()">FAQ</a></li>
+<li><a href="#kontak" data-sec="kontak" onclick="closeMenu()">Kontak</a></li>
+</ul>
+<div class="nav-actions">
+<button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="Ganti Tema" aria-label="Ganti Tema">
+<span id="themeIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+</button>
+<button class="cart-btn" onclick="toggleCart()" aria-label="Buka Keranjang">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+<span>Keranjang</span>
+<span class="cart-count" id="cartCount">0</span>
+</button>
+<button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" id="hamburger"><span></span><span></span><span></span></button>
+</div>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-text">
+<h1>Manisnya <span>Dessert</span> Premium, Dibuat Fresh Setiap Hari</h1>
+<p>Dessertkchaww menghadirkan cake, pastry, dan dessert box dengan bahan premium pilihan. Pesan sekarang dan rasakan kelembutan di setiap gigitan.</p>
+<a href="#menu" class="cta-btn">Lihat Menu Hari Ini<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</div>
+<div class="hero-img">
+<img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&q=75&auto=format&fit=crop"
+srcset="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=480&q=75&auto=format&fit=crop 480w, https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&q=75&auto=format&fit=crop 800w"
+sizes="(max-width:900px) 92vw, 560px" fetchpriority="high" decoding="async"
+alt="Signature Strawberry Cream Cake Dessertkchaww" onerror="imgFail(this)">
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Kategori Dessert</h2>
+<p class="section-sub">Pilih kategori favoritmu dan temukan manis yang pas</p>
+<div class="categories">
+<div class="category-card" onclick="filterCategory('Cakes')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7"/><path d="M2 21h20"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M8 12V9"/><path d="M12 12V9"/><path d="M16 12V9"/></svg></span><h4>Cakes</h4></div>
+<div class="category-card" onclick="filterCategory('Pastries')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4.6 13.11 5.79-3.21c1.89-1.05 4.79 1.78 3.71 3.71l-3.22 5.81C8.8 23.16.79 15.23 4.6 13.11Z"/></svg></span><h4>Pastries</h4></div>
+<div class="category-card" onclick="filterCategory('Dessert Box')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><h4>Dessert Boxes</h4></div>
+<div class="category-card" onclick="filterCategory('Cookies')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></span><h4>Cookies</h4></div>
+<div class="category-card" onclick="filterCategory('Vegan')"><span class="emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><h4>Vegan / GF</h4></div>
+</div>
+</section>
+
+<section id="menu">
+<h2 class="section-title">Menu & Katalog Produk</h2>
+<p class="section-sub">Klik "Beli" untuk checkout langsung, atau <b>+</b> untuk tambah ke keranjang</p>
+<div class="how-steps">
+<div class="how-step"><span class="how-num">1</span><div><b>Pilih dessert</b><small>Tekan + atau Beli</small></div></div>
+<div class="how-step"><span class="how-num">2</span><div><b>Isi data & bayar</b><small>Pilih metode pembayaran</small></div></div>
+<div class="how-step"><span class="how-num">3</span><div><b>Konfirmasi WhatsApp</b><small>Pesanan langsung diproses</small></div></div>
+</div>
+<div class="search-box"><div class="search-wrap">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+<input type="search" id="searchInput" placeholder="Cari menu favorit Anda..." oninput="renderProducts()">
+</div></div>
+<div class="filter-bar">
+<button class="filter-btn active" data-cat="all" onclick="filterCategory('all', this)">Semua</button>
+<button class="filter-btn" data-cat="Cakes" onclick="filterCategory('Cakes', this)">Cakes</button>
+<button class="filter-btn" data-cat="Pastries" onclick="filterCategory('Pastries', this)">Pastries</button>
+<button class="filter-btn" data-cat="Dessert Box" onclick="filterCategory('Dessert Box', this)">Dessert Box</button>
+<button class="filter-btn" data-cat="Cookies" onclick="filterCategory('Cookies', this)">Cookies</button>
+<button class="filter-btn" data-cat="Vegan" onclick="filterCategory('Vegan', this)">Vegan</button>
+</div>
+<div class="product-grid" id="productGrid"></div>
+</section>
+
+<section>
+<h2 class="section-title">Kenapa Pilih Dessertkchaww?</h2>
+<p class="section-sub">Kualitas terbaik untuk momen manis Anda</p>
+<div class="features">
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div><h4>Bahan Premium</h4><p>Menggunakan cokelat Belgia, mentega Prancis, dan buah segar pilihan.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg></div><h4>Freshly Baked</h4><p>Dibuat segar setiap hari, tanpa pengawet, langsung dari dapur kami.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div><h4>Pengiriman Suhu Terjaga</h4><p>Dikemas dengan ice pack agar dessert tetap sempurna saat tiba.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div><h4>Pembayaran Fleksibel</h4><p>Transfer bank, e-wallet, QRIS, hingga COD. Pilih yang paling mudah!</p></div>
+</div>
+</section>
+
+<section id="testimoni">
+<h2 class="section-title">Kata Pelanggan Kami</h2>
+<p class="section-sub">Cerita manis dari mereka yang sudah mencoba</p>
+<div class="testimonial-grid">
+<div class="testimonial"><p>Molten cake-nya juara! Cokelatnya lumer banget dan nggak bikin enek. Pengiriman juga cepat.</p><div class="name">— Sarah, Jakarta</div><div class="stars">★★★★★</div></div>
+<div class="testimonial"><p>Dessert box-nya cantik dan rasanya premium. Cocok banget buat hadiah ulang tahun teman.</p><div class="name">— Andini, Bandung</div><div class="stars">★★★★★</div></div>
+<div class="testimonial"><p>Sebagai yang gluten-free, aku senang banget ada pilihan vegan & gluten-free yang enak!</p><div class="name">— Maria, Surabaya</div><div class="stars">★★★★★</div></div>
+</div>
+</section>
+
+<section id="ulasan">
+<h2 class="section-title">Ulasan Pelanggan</h2>
+<p class="section-sub">Bagikan pengalaman Anda — ulasan tampil publik di semua perangkat</p>
+<div class="review-summary">
+<div class="rating-big"><div class="avg-num" id="avgRating">5.0</div><div class="stars-big" id="avgStars">★★★★★</div><div class="total-reviews"><span id="totalReviews">0</span> ulasan pelanggan</div></div>
+<div class="rating-bars" id="ratingBars"></div>
+</div>
+<div class="review-layout">
+<div class="review-form-card">
+<h3>Tulis Ulasan Anda</h3>
+<form onsubmit="submitReview(event)" id="reviewForm">
+<input type="text" id="revName" placeholder="Nama Anda *" required maxlength="50">
+<input type="text" id="revCity" placeholder="Kota (opsional)" maxlength="30">
+<select id="revProduct" required>
+<option value="">— Pilih Produk —</option>
+<option>Belgian Chocolate Molten Cake</option><option>Strawberry Shortcake</option>
+<option>Butter Croissant</option><option>Pain au Chocolat</option>
+<option>Dessert Box Tiramisu</option><option>Dessert Box Mango Sticky</option>
+<option>Choco Chip Cookies</option><option>Matcha Almond Cookies</option>
+<option>Vegan Chocolate Cake</option><option>Gluten-Free Banana Bread</option>
+<option>Red Velvet Cake</option><option>Cinnamon Roll</option><option>Umum / Toko</option>
+</select>
+<div class="star-picker" id="starPicker">
+<span onclick="setReviewRating(1)" data-star="1">☆</span><span onclick="setReviewRating(2)" data-star="2">☆</span>
+<span onclick="setReviewRating(3)" data-star="3">☆</span><span onclick="setReviewRating(4)" data-star="4">☆</span>
+<span onclick="setReviewRating(5)" data-star="5">☆</span>
+</div>
+<p class="rating-text" id="ratingText">Klik bintang untuk memberi rating</p>
+<textarea id="revComment" placeholder="Ceritakan pengalaman Anda... *" required maxlength="500"></textarea>
+<button type="submit" id="submitReviewBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>Kirim Ulasan</button>
+</form>
+</div>
+<div class="reviews-col"><div class="reviews-list" id="reviewsList"></div></div>
+</div>
+</section>
+
+<section id="about">
+<h2 class="section-title">Tentang Dessertkchaww</h2>
+<p class="section-sub">Cerita di balik setiap gigitan manis</p>
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=700&auto=format&q=75"
+srcset="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=480&auto=format&q=75 480w, https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=700&auto=format&q=75 700w"
+sizes="(max-width:900px) 92vw, 560px" alt="Dapur Dessertkchaww" loading="lazy" decoding="async" onerror="imgFail(this)">
+</div>
+<div class="about-text">
+<h3>Dari Dapur Kecil, Untuk Momen Bahagia Anda</h3>
+<p>Dessertkchaww lahir dari kecintaan kami pada dunia pastry dan keinginan untuk menghadirkan dessert berkualitas restoran ke rumah Anda. Dimulai pada tahun 2020 dari dapur kecil, kini kami dipercaya ribuan pelanggan setia.</p>
+<p>Kami percaya bahwa dessert bukan sekadar makanan penutup — ia adalah bagian dari kenangan. Karena itu, kami hanya menggunakan bahan-bahan terbaik: cokelat Belgia, mentega Prancis, dan buah segar setiap hari.</p>
+<p><strong>Visi kami:</strong> Menjadi brand dessert rumahan paling dicintai di Indonesia.</p>
+</div>
+</div>
+</section>
+
+<section id="hampers">
+<div class="hampers">
+<h2 class="section-title">Hampers & Custom Orders</h2>
+<p class="section-sub">Hadiah manis untuk momen istimewa</p>
+<div class="hampers-grid">
+<div class="hampers-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7"/><path d="M2 21h20"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M8 12V9"/><path d="M12 12V9"/><path d="M16 12V9"/></svg></div><h4>Hampers Box</h4><p>Paket dessert cantik dengan pita & kartu ucapan, siap dikirim ke orang tersayang.</p></div>
+<div class="hampers-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/></svg></div><h4>Custom Cake</h4><p>Desain cake sesuai tema acara Anda: ulang tahun, wisuda, atau anniversary.</p></div>
+<div class="hampers-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg></div><h4>Corporate Gift</h4><p>Pesan dalam jumlah besar untuk klien atau karyawan. Harga spesial & custom logo.</p></div>
+</div>
+<form class="custom-form" onsubmit="submitCustomOrder(event)">
+<input type="text" id="custName" placeholder="Nama Anda *" required maxlength="60">
+<input type="tel" id="custPhone" placeholder="No. WhatsApp *" required maxlength="20" inputmode="tel" autocomplete="tel">
+<select id="custType" required>
+<option value="">— Jenis Pesanan —</option>
+<option>Hampers Box</option><option>Custom Cake</option><option>Corporate Gift</option><option>Lainnya</option>
+</select>
+<textarea id="custMsg" placeholder="Detail pesanan (jumlah, tema, tanggal, dll.) *" required maxlength="500" rows="4"></textarea>
+<button type="submit" id="custBtn">Kirim via WhatsApp</button>
+</form>
+</div>
+</section>
+
+<section id="faq">
+<h2 class="section-title">Pertanyaan Umum</h2>
+<p class="section-sub">Beberapa hal yang sering ditanyakan pelanggan</p>
+<div id="faqList">
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Berapa lama dessert tahan di kulkas?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Cake & dessert box tahan 2-3 hari di kulkas. Pastry sebaiknya dikonsumsi hari yang sama atau hangatkan ulang di oven 150°C selama 3 menit.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Apakah bisa COD (bayar di tempat)?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Bisa! Pilih metode COD saat checkout. Berlaku untuk area Jabodetabek dengan minimal order Rp 100.000.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Pengiriman pakai apa? Aman nggak?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Kami menggunakan kurir instan (GoSend/GrabExpress) dengan kemasan ice pack. Untuk luar kota, kami kirim via ekspedisi berpendingin.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><div class="faq-left"><span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span><span class="faq-text">Bisa pesan untuk acara besar (bulk order)?</span></div><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m6 9 6 6 6-6"/></svg></span></div><div class="faq-answer">Sangat bisa! Hubungi kami via WhatsApp minimal H-3 acara. Kami sediakan harga khusus untuk pemesanan > 20 pcs.</div></div>
+</div>
+</section>
+
+<section id="kontak">
+<h2 class="section-title">Hubungi Kami</h2>
+<p class="section-sub">Kami siap membantu Anda — balas cepat via WhatsApp</p>
+<div class="contact-grid">
+<div class="contact-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><h4>Lokasi</h4><p>Jl. Manis No. 12<br>Jakarta Selatan<br>Buka 09.00 – 20.00</p></div>
+<div class="contact-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div><h4>WhatsApp</h4><p>Pesan cepat, respon jam kerja<br>+62 851-5096-4596</p><a class="wa-btn" href="https://wa.me/6285150964596?text=Halo%20Dessertkchaww" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.3-.1-.5-.15-.7.15-.2.3-.8.95-1 1.15-.2.2-.35.2-.65.05-.3-.15-1.3-.5-2.5-1.55-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.05-.15-.65-1.55-.9-2.15-.25-.55-.5-.5-.7-.5h-.6c-.2 0-.5.05-.8.4-.3.35-1.05 1-1.05 2.45s1.05 2.85 1.2 3.05c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.6.7.25 1.35.2 1.85.15.55-.1 1.7-.7 1.95-1.4.25-.7.25-1.3.15-1.4-.05-.15-.25-.2-.55-.35Z"/></svg>Chat WhatsApp</a></div>
+<div class="contact-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div><h4>Instagram</h4><p>Lihat update menu & promo<br>@rm.fresco</p><a class="ig-btn" href="https://www.instagram.com/rm.fresco?fqnt=MXA4OHhiYzZlZXM4eA==" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Follow IG</a></div>
+</div>
+</section>
+
+<footer>
+<div class="logo">Dessert<span>kchaww</span></div>
+<p>© <span id="year"></span> Dessertkchaww — Manis di setiap gigitan. Dibuat dengan ❤️ di Indonesia.</p>
+</footer>
+
+<!-- CART -->
+<div class="cart-modal" id="cartModal" role="dialog" aria-modal="true">
+<div class="cart-header"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>Keranjang</h3><button onclick="toggleCart()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-footer">
+<div class="cart-total"><span>Total</span><span id="cartTotal">Rp 0</span></div>
+<button class="checkout-btn" onclick="openCheckout('cart')">Lanjut ke Checkout</button>
+</div>
+</div>
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<!-- CHECKOUT -->
+<div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true">
+<div class="checkout-content">
+<div class="checkout-header"><h3>Checkout Pesanan</h3><button onclick="closeCheckout()" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+<div class="checkout-steps">
+<div class="step active" id="step1"><span class="step-num">1</span>Data</div>
+<div class="step-line"></div>
+<div class="step" id="step2"><span class="step-num">2</span>Pembayaran</div>
+<div class="step-line"></div>
+<div class="step" id="step3"><span class="step-num">3</span>Selesai</div>
+</div>
+<div class="checkout-body">
+<div class="checkout-section" id="directQtySection" style="display:none"></div>
+<div class="checkout-section">
+<h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Data Pengiriman</h4>
+<div class="shipping-form">
+<input type="text" id="coName" placeholder="Nama Penerima *" required maxlength="60" autocomplete="name">
+<input type="tel" id="coPhone" placeholder="No. WhatsApp *" required maxlength="20" inputmode="tel" autocomplete="tel">
+<textarea id="coAddress" placeholder="Alamat Lengkap *" required maxlength="300" rows="3" autocomplete="street-address"></textarea>
+<textarea id="coNote" placeholder="Catatan (opsional)" maxlength="200" rows="2"></textarea>
+</div>
+</div>
+<div class="checkout-section">
+<h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>Metode Pembayaran</h4>
+<div class="payment-methods" id="paymentMethods">
+<label class="payment-option selected"><input type="radio" name="pay" value="Transfer BCA" checked><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span><div class="pay-info"><h5>Transfer BCA</h5><p>Verifikasi manual</p></div></label>
+<label class="payment-option"><input type="radio" name="pay" value="Transfer Mandiri"><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span><div class="pay-info"><h5>Transfer Mandiri</h5><p>Verifikasi manual</p></div></label>
+<label class="payment-option"><input type="radio" name="pay" value="QRIS"><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/></svg></span><div class="pay-info"><h5>QRIS</h5><p>Semua e-wallet</p></div></label>
+<label class="payment-option"><input type="radio" name="pay" value="COD"><span class="pay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span><div class="pay-info"><h5>COD</h5><p>Bayar di tempat (Jabodetabek)</p></div></label>
+</div>
+</div>
+<div class="checkout-section">
+<h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Ringkasan Pesanan</h4>
+<div class="order-summary" id="orderSummary"></div>
+</div>
+</div>
+<div class="checkout-actions">
+<button class="btn-cancel" onclick="closeCheckout()">Batal</button>
+<button class="btn-confirm" id="confirmBtn" onclick="confirmOrder()">Konfirmasi Pesanan</button>
+</div>
+</div>
+</div>
+
+<!-- PAYMENT RESULT -->
+<div class="payment-result" id="paymentResult" role="dialog" aria-modal="true">
+<div class="payment-result-content">
+<div class="result-header">
+<div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+<h3>Pesanan Berhasil Dibuat!</h3>
+<p>Silakan konfirmasi via WhatsApp agar pesanan segera diproses.</p>
+</div>
+<div class="result-body" id="resultBody"></div>
+<div class="result-actions">
+<button class="btn-wa-confirm" id="waConfirmBtn" onclick="confirmViaWA()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.3-.1-.5-.15-.7.15-.2.3-.8.95-1 1.15-.2.2-.35.2-.65.05-.3-.15-1.3-.5-2.5-1.55-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.05-.15-.65-1.55-.9-2.15-.25-.55-.5-.5-.7-.5h-.6c-.2 0-.5.05-.8.4-.3.35-1.05 1-1.05 2.45s1.05 2.85 1.2 3.05c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.6.7.25 1.35.2 1.85.15.55-.1 1.7-.7 1.95-1.4.25-.7.25-1.3.15-1.4-.05-.15-.25-.2-.55-.35Z"/></svg>Konfirmasi via WhatsApp</button>
+<button class="btn-close-result" onclick="closeResult()">Tutup</button>
+</div>
+</div>
+</div>
+
+<!-- FLOATING -->
+<button class="wa-float" onclick="floatWA()" title="Chat WhatsApp" aria-label="Chat WhatsApp">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.3-.1-.5-.15-.7.15-.2.3-.8.95-1 1.15-.2.2-.35.2-.65.05-.3-.15-1.3-.5-2.5-1.55-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.45.15-.6.15-.15.3-.35.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4-.05-.55-.05-.15-.65-1.55-.9-2.15-.25-.55-.5-.5-.7-.5h-.6c-.2 0-.5.05-.8.4-.3.35-1.05 1-1.05 2.45s1.05 2.85 1.2 3.05c.15.2 2.05 3.15 5 4.4.7.3 1.25.5 1.65.6.7.25 1.35.2 1.85.15.55-.1 1.7-.7 1.95-1.4.25-.7.25-1.3.15-1.4-.05-.15-.25-.2-.55-.35Z"/></svg>
+<span class="wa-dot"></span>
+</button>
+<button class="cart-float" onclick="toggleCart()" title="Keranjang" aria-label="Keranjang">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+<span class="cart-float-badge" id="cartFloatBadge">0</span>
+</button>
+<button class="to-top" id="toTop" onclick="goTop()" aria-label="Ke atas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg></button>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
