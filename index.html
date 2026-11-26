@@ -752,6 +752,53 @@ footer p{font-size:.84rem;opacity:.8}
   .fly-img{transition:none}
   .reveal-pop, .reveal-slide-left, .reveal-up, .reveal-right, .reveal-zoom, .reveal-left, .reveal-bounce, .reveal-flip { opacity: 1; transform: none; transition: none; }
 }
+  <!-- ================= TAMBAHKAN CSS INI ================= -->
+<!-- Letakkan di dalam <style>, tepat SEBELUM baris: /* ============ CSS SELESAI ============ */ -->
+
+/* ===== HEADER FOLLOW-ON-SCROLL (TAMBAHAN) ===== */
+header{
+  transition:background-color .35s ease,border-color .35s ease,
+             box-shadow .3s var(--ease),padding .3s var(--ease);
+}
+header::after{
+  content:'';position:absolute;left:0;bottom:-1px;height:2px;width:var(--scroll-progress,0%);
+  background:linear-gradient(90deg,var(--sage),var(--amber));
+  border-radius:0 2px 2px 0;z-index:5;pointer-events:none;
+  transition:width .08s linear,opacity .3s ease;
+}
+header.scrolled::after{box-shadow:0 0 8px rgba(143,169,123,.55)}
+
+/* state ringkas saat halaman di-scroll */
+header.scrolled{
+  box-shadow:var(--shadow-md);
+  background:var(--header-bg);
+  border-bottom-color:var(--accent-light);
+}
+header.scrolled nav{padding-top:9px;padding-bottom:9px}
+nav{transition:padding .3s var(--ease)}
+
+/* tombol ikut mengecil sedikit (tetap nyaman disentuh) */
+header.scrolled .theme-toggle,
+header.scrolled .hamburger{width:40px;height:40px}
+header.scrolled .theme-toggle svg{width:18px;height:18px}
+header.scrolled .cart-btn{min-height:40px;padding:9px 15px}
+header.scrolled .logo{transform:scale(.97)}
+.logo{transition:transform .3s var(--ease),color .25s ease}
+
+/* jangan ringkas saat menu mobile sedang terbuka */
+@media (max-width:900px){
+  header.scrolled:has(.nav-links.open){box-shadow:var(--shadow-md)}
+  header.scrolled:has(.nav-links.open) nav{padding-top:12px;padding-bottom:12px}
+}
+
+/* jaga titik lompat anchor tetap pas dengan tinggi header */
+html{scroll-padding-top:84px}
+@media (max-width:640px){html{scroll-padding-top:72px}}
+
+@media (prefers-reduced-motion:reduce){
+  header,nav,.logo{transition:none}
+}
+/* ===== SELESAI TAMBAHAN HEADER ===== */
 /* ============ CSS SELESAI ============ */
 </style>
 </head>
@@ -1844,6 +1891,88 @@ document.addEventListener('DOMContentLoaded', () => {
     if (target) setTimeout(() => target.scrollIntoView({behavior:'smooth'}), 300);
   }
 });
+  <!-- ================= TAMBAHKAN JS INI ================= -->
+<!-- Letakkan tepat SEBELUM </body>, setelah script utama Anda -->
+
+<script>
+(function(){
+  var header = document.querySelector('header');
+  if(!header) return;
+
+  var navLinks = document.getElementById('navLinks');
+  var links    = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[data-sec]'));
+  var sections = links.map(function(a){ return document.getElementById(a.getAttribute('data-sec')); })
+                      .filter(Boolean);
+
+  var ticking = false;
+
+  function updateHeader(){
+    var y   = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    var menuOpen = navLinks && navLinks.classList.contains('open');
+
+    /* 1) Header ringkas saat scroll */
+    header.classList.toggle('scrolled', y > 12 && !menuOpen);
+
+    /* 2) Progress bar scroll */
+    var p = max > 0 ? (y / max) * 100 : 0;
+    if(p < 0) p = 0; if(p > 100) p = 100;
+    header.style.setProperty('--scroll-progress', p.toFixed(2) + '%');
+
+    /* 3) Scrollspy: tandai menu yang sedang dilihat */
+    if(sections.length){
+      var offset = header.offsetHeight + 24;
+      var currentId = sections[0].id;
+      for(var i = 0; i < sections.length; i++){
+        if(sections[i].getBoundingClientRect().top - offset <= 0){
+          currentId = sections[i].id;
+        }
+      }
+      /* di dasar halaman -> aktifkan section terakhir */
+      if(max > 0 && y >= max - 2){
+        currentId = sections[sections.length - 1].id;
+      }
+      links.forEach(function(a){
+        a.classList.toggle('active', a.getAttribute('data-sec') === currentId);
+      });
+    }
+
+    ticking = false;
+  }
+
+  function onScroll(){
+    if(!ticking){
+      ticking = true;
+      window.requestAnimationFrame(updateHeader);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('orientationchange', onScroll);
+  window.addEventListener('load', updateHeader);
+
+  /* klik menu -> langsung tandai aktif (biar responsif) */
+  links.forEach(function(a){
+    a.addEventListener('click', function(){
+      links.forEach(function(x){ x.classList.remove('active'); });
+      a.classList.add('active');
+    });
+  });
+
+  updateHeader();
+})();
+</script>
+
+<!-- OPSIONAL: header auto-hide saat scroll ke bawah (sembunyi di bawah, muncul saat scroll ke atas)
+     Tambahkan CSS ini jika ingin efek tersebut:
+     header{transition:transform .35s ease, box-shadow .3s ease, background-color .35s ease}
+     header.hide{transform:translateY(-100%)}
+     Lalu tambahkan di dalam updateHeader():
+     if(y > lastY && y > 300) header.classList.add('hide'); else header.classList.remove('hide');
+     lastY = y;
+-->
 </script>
 </body>
 </html>
